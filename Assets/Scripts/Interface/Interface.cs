@@ -14,10 +14,7 @@ public class Interface : MonoBehaviour {
 
 	void Update()
 	{
-		for (int i=0 ; i<=3 ; i++)
-		{
-			ButtonColorChange (CanAffordMonster(i), i);
-		}
+
 	}
 
 	void Start()
@@ -34,7 +31,7 @@ public class Interface : MonoBehaviour {
 		gold = 1000;
 		SetGoldText ();
 		SetDayText ();
-	//	MonsterPrice ();
+		//MonsterPrice ();
 	}
 
 
@@ -48,26 +45,12 @@ public class Interface : MonoBehaviour {
 	}
 
 	//Prix des stats
-	//public int StatsValue(int attack, int attackSpeed, int hp, int armor, int mooveSpeed)
 	public int StatsValue(int attack, int hp)
 	{
 		monsterPrice =  (int)Mathf.Round((priceHP * hp) + (priceAttack * attack));
 		return monsterPrice;
 	}
-
-
-	//Calcul du coût du monstre
-	public void MonsterPrice()
-	{
-		//monsterPrice = StatsValue(initAttack, initAttackSpeed, initHP, initArmor, 0);
-		monsterPrice = StatsValue(initAttack, initHP);
-
-		for (int i=0 ; i<=3 ; i++)
-		{
-			ButtonColorChange (CanAffordMonster(i), i);
-		}
-	}
-
+		
 	//Possibilité d'achat Oui/Non
 	public bool CanAffordMonster(int monsterNum)
 	//la variable locale Monster représente :
@@ -95,10 +78,6 @@ public class Interface : MonoBehaviour {
 	{
 		gold -= price;
 		SetGoldText ();
-		for (int i=0 ; i<=3 ; i++)
-		{
-			ButtonColorChange (CanAffordMonster(i), i);
-		}
 	}
 
 	//Achat d'un monstre
@@ -106,32 +85,9 @@ public class Interface : MonoBehaviour {
 	{
 		gold += goldToAdd;
 		SetGoldText ();
-		for (int i=0 ; i<=3 ; i++)
-		{
-			ButtonColorChange (CanAffordMonster(i), i);
-		}
 	}
 
-	//Gestion de couleur du bouton d'achat de monstre
-	void ButtonColorChange(bool canAfford, int monsterNum)
-	{
-		if (canAfford) {
-			//VERT
-			if (monsterNum == 0) {
-				GameObject.Find ("GenerateMonster").GetComponent<Image> ().color = new Color (0f, 0.7f, 0f, 1f);
-			} else {
-				GameObject.Find ("Button" + monsterNum.ToString ()).GetComponent<Image> ().color = new Color (0f, 0.7f, 0f, 1f);
-			}
-		} else {
-			//ROUGE
-			if (monsterNum == 0) {
-				GameObject.Find ("GenerateMonster").GetComponent<Image> ().color = new Color (1f, 0f, 0f, 1f);
-			} else {
-				GameObject.Find ("Button" + monsterNum.ToString ()).GetComponent<Image> ().color = new Color (1f, 0f, 0f, 1f);
-			}
-		}
-	}
-		
+
 	public void StartDay()
 	{
 		GameObject.Find("Environment").GetComponent<DayGest>().StartNewDay();

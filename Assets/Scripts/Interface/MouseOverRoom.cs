@@ -11,7 +11,7 @@ public class MouseOverRoom: MonoBehaviour {
 	void Start()
 	{
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
-		canvasInterface = GameObject.Find ("CanvasNight").GetComponent<Interface> ();
+		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 	}
 
 	// OnMouseEnter et OnMouseExit permettent de gérer la transparence des cases quand on passe dessus
@@ -40,7 +40,8 @@ public class MouseOverRoom: MonoBehaviour {
 			env.settingHeart = false;
 
 			//On réactive le Canvas et on enlève le texte de Choix de salle de départ
-			GameObject.Find ("CanvasNight").GetComponent<Canvas> ().enabled = true;
+			GameObject.Find ("CanvasGeneral").GetComponent<Canvas> ().enabled = true;
+			GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
 			GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = false;
 
 			//On ne pourra plus sélectionner cette case donc on la détruit
@@ -116,6 +117,8 @@ public class MouseOverRoom: MonoBehaviour {
 
 			//On retire le prix au trésor
 			canvasInterface.BuyMonster (selectedMonster.monsterPrice);
+
+			//On enregistre les données du monstre
 			actor.roomH = GetComponent<InfoRoom> ().H;
 			actor.roomW = GetComponent<InfoRoom> ().W;
 			actor.hpmax = selectedMonster.monsterHP;
@@ -123,11 +126,16 @@ public class MouseOverRoom: MonoBehaviour {
 			actor.value = selectedMonster.monsterPrice;
 			actor.roomPos = 5;
 			monster.transform.SetParent (Dungeon.monsters);
-			env.addingMonster = false;
 			GetComponentInParent<InfoRoom>().containsMonster = true;
 
 			//On désactive l'overlay
 			OverlayOff();
+			env.addingMonster = false;
+
+			//On autorise la génération d'un nouveau monstre
+			GameObject.Find ("GenerateMonster").GetComponent<NewMonsterButtonScript> ().GenerationEnabled = true;
+			GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
+			GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = false;
 		}
 	}
 

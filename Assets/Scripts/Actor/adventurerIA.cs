@@ -15,7 +15,7 @@ public class adventurerIA : MonoBehaviour {
 
 	void Start()
 	{
-		speed = GameObject.Find ("CanvasDay").GetComponent<GameSpeed> ();
+		speed = GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ();
 		currentAdventurer = GetComponent<Actor> ();
 		moving = false;
 		cooldown = (float)100 / (float)currentAdventurer.mooveSpeed;

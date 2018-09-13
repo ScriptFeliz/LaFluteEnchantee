@@ -8,10 +8,12 @@ public class NewMonsterButtonScript : MonoBehaviour {
 
 	private Canvas canvasPrice, generateMonster, canvasNotEnoughGold;
 	private Interface canvasInterface;
+	public bool GenerationEnabled;
 
 	void Start()
 	{
-		canvasInterface = GameObject.Find ("CanvasNight").GetComponent<Interface> ();
+		GenerationEnabled = true;
+		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 		canvasPrice = GameObject.Find ("CanvasGenePrice").GetComponent<Canvas> ();
 	}
 	void Update()
@@ -34,19 +36,26 @@ public class NewMonsterButtonScript : MonoBehaviour {
 	{
 		//On vérifie qu'on a assez d'or pour acheter le monstre
 		if (canvasInterface.CanAffordMonster (monsterNum))
-		{
+		{	
 
 			// monsternum == 0 correspond à la génération des 3 monstres que l'on peut acheter
 			if (monsterNum == 0) {
-				//On retire les 50g au coffre
-				canvasInterface.BuyMonster (50);
-				GameObject.Find ("GeneratedMonsters").GetComponent<Canvas> ().enabled = true;
-				GameObject.Find ("GenerateMonster").GetComponent<MonsterPool> ().GeneratePool ();	
+
+				if (GenerationEnabled) {
+					//On retire les 50g au coffre
+					canvasInterface.BuyMonster (50);
+					GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = false;
+					GameObject.Find ("GeneratedMonsters").GetComponent<Canvas> ().enabled = true;
+					GameObject.Find ("GenerateMonster").GetComponent<MonsterPool> ().GeneratePool ();
+					GenerationEnabled = false;
+				}
 
 				//On génère les monstres
 			} else {
 				//On active l'overlay pour choisir la salle dans laquelle instancier le monstre (c'est dans le contrôle de l'overlay que le monstre est ensuite instancié, voir MouseOverRoom.cs)
 				GameObject.Find ("Environment").GetComponent<Environment> ().addingMonster = true;
+				GameObject.Find ("TextOverlay").GetComponent<TextOverlay> ().SetTextOverlay ();
+				GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = true;
 				GameObject.Find ("Environment").GetComponent<Environment> ().monsterNum = monsterNum;
 				GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
 				foreach (GameObject Overlay in gameObjectOverlay) {
@@ -67,7 +76,8 @@ public class NewMonsterButtonScript : MonoBehaviour {
 	public void CancelGeneratedMonsetrs()
 	{
 		GameObject.Find ("GeneratedMonsters").GetComponent<Canvas> ().enabled = false;
-
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
+		GenerationEnabled = true;
 	}
 
 	//Achat impossible

@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterPool : MonoBehaviour {
 
 	public int[] monsterID, hp, attack, price;
-	public int rdmMonster;
+	public int rdmMonster, gold;
+	Interface canvasInterface;
+	public Sprite[] monsterSprite;
 
 	// Use this for initialization
 	void Start () {
-		
+		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 	}
 	
 	// Update is called once per frame
@@ -26,10 +29,12 @@ public class MonsterPool : MonoBehaviour {
 			hp = new int[3];
          	attack = new int[3];
 			price = new int[3];
-
+			monsterSprite = new Sprite[3];
+				
 			rdmMonster = 1;// pour le moment on n'a qu'un type de monstre
 
-			GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[1];
+			GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[rdmMonster];
+
 			Actor actor = monster.GetComponent <Actor> ();
 
 			monsterID[i] = rdmMonster;
@@ -37,8 +42,27 @@ public class MonsterPool : MonoBehaviour {
 			hp [i] = actor.hpmax;
 			attack [i] = actor.attack;
 			price [i] = actor.value;
+
 			//On affiche à l'écran les stats générées
 			GameObject.Find("Monster" + (i + 1).ToString()).GetComponent<SetMonster>().SetStats(monsterID[i], hp[i], attack[i], price[i]);
+
+			//Gestion de l'image
+			monsterSprite [i] = monster.GetComponent<SpriteRenderer>().sprite;
+
+			GameObject.Find("Monster" + (i + 1).ToString()).GetComponent<Image>().sprite = monsterSprite [i];
+
+			//Gestion de la couleur du bouton d'achat
+			gold = canvasInterface.gold;
+
+			if ((gold - price [i]) >= 0)
+			{
+				GameObject.Find ("Button" + (i + 1).ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, 0f);
+				GameObject.Find ("ImagePrice" + (i + 1).ToString()).GetComponent<Image>().color = new Color (0f, 0.7f, 0f, 1f);
+
+			} else {
+				GameObject.Find ("Button" + (i + 1).ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, 0f);
+				GameObject.Find ("ImagePrice" + (i + 1).ToString()).GetComponent<Image>().color = new Color (1f, 0f, 0f, 1f);
+			}
 		}
 	}
 }

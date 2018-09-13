@@ -23,7 +23,13 @@ public class TextOverlay : MonoBehaviour {
 
 		if (env.gameOver == true)
 		{
-			textOverlay.text = "! GAME OVER !" ;
+			textOverlay.text = "GAME OVER !" ;
+		}
+
+		if (env.addingMonster == true)
+		{
+			textOverlay.text = "CHOOSE A ROOM FOR YOUR MONSTER" ;
+
 		}
 	}
 }

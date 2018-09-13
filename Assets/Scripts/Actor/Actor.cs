@@ -86,9 +86,8 @@ public class Actor : MonoBehaviour {
 
 		if (tag == "Adventurer")
 		{
-			//int adventurerValue = (int)Mathf.Round(GameObject.Find ("CanvasNight").GetComponent<Interface> ().StatsValue(attack, attackSpeed, hpmax, armor, mooveSpeed) / 2);
-			int adventurerValue = (int)Mathf.Round(GameObject.Find ("CanvasNight").GetComponent<Interface> ().StatsValue(attack, hpmax) / 2);
-			GameObject.Find ("CanvasNight").GetComponent<Interface> ().addGold (adventurerValue);
+			int adventurerValue = (int)Mathf.Round(GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().StatsValue(attack, hpmax));
+			GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().addGold (adventurerValue);
 			env.adventurersNumber -= 1;
 		}
 

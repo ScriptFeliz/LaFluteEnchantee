@@ -13,9 +13,10 @@ public class CanvasGest : MonoBehaviour {
 	// Choisir la salle de départ
 	public void settingAdventurersRoom()
 	{
-		GameObject.Find ("CanvasNight").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("CanvasDay").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("CanvasGenePrice").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasGeneral").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("NotEnoughGold").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("Environment").GetComponent<Environment>().settingAdventurersRoom = true;

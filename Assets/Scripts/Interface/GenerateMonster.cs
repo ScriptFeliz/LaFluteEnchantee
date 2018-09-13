@@ -10,7 +10,7 @@ public class GenerateMonster : MonoBehaviour {
 
 	void Start()
 	{
-		canvasInterface = GameObject.Find ("CanvasNight").GetComponent<Interface> ();
+		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 		canvasPrice = GameObject.Find ("CanvasPrice").GetComponent<Canvas>();
 	}
 	
