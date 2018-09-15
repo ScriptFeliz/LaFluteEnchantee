@@ -10,7 +10,7 @@ public class adventurerSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speed = GameObject.Find ("CanvasDay").GetComponent<GameSpeed> ();
+		speed = GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ();
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
 		cooldownTimer = 1;
 	}

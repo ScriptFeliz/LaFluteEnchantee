@@ -13,7 +13,7 @@ public class MainIso : MonoBehaviour {
 		Instantiate (dungeon);
 		Instantiate (canvasGest);
 
-		GameObject.Find ("CanvasDay").GetComponent<GameSpeed> ().SetGameSpeed(1);
+		GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ().SetGameSpeed(1);
 	}
 
 	// Use this for initialization

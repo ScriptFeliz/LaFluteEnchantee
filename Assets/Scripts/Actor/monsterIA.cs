@@ -13,7 +13,7 @@ public class monsterIA : MonoBehaviour {
 
 	void Start()
 	{
-		speed = GameObject.Find ("CanvasDay").GetComponent<GameSpeed> ();
+		speed = GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ();
 		currentMonster = GetComponent<Actor> ();
 		cooldownTimer = 0;
 	}

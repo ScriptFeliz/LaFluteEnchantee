@@ -29,9 +29,9 @@ public class DayGest : MonoBehaviour {
 	{
 		env.newDay ();
 		dayStarted = true;
-		GameObject.Find ("CanvasNight").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("CanvasDay").GetComponent<Canvas> ().enabled = true;
-		GameObject.Find ("CanvasDay").GetComponent<DayInterface>().setDayTxt();
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = true;
+		GameObject.Find ("CanvasDayGeneral").GetComponent<DayInterface>().setDayTxt();
 	}
 
 	IEnumerator EndDay()
@@ -46,15 +46,14 @@ public class DayGest : MonoBehaviour {
 			actor.SetHealthBar();
 		}
 
-		GameObject.Find ("CanvasNight").GetComponent<Canvas> ().enabled = true;
-		GameObject.Find ("CanvasDay").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
+		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = false;
 	}
 
 	void SetNextDay()
 	{
 		env.day += 1;
-		GameObject.Find ("CanvasNight").GetComponent<Interface> ().SetDayText();
-        GameObject.Find ("CanvasNight").GetComponent<Interface> ().MonsterPrice();
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().SetDayText();
 
         env.baseHP = env.baseHP + (int)(env.baseHP * 0.1);
 

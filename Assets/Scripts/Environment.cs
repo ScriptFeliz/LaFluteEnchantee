@@ -58,8 +58,9 @@ public class Environment : MonoBehaviour {
 	{
 		GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = true;
 		GameObject.Find ("TextOverlay").GetComponent<TextOverlay> ().SetTextOverlay ();
-		GameObject.Find ("CanvasDay").GetComponent<GameSpeed> ().SetGameSpeed(1);
-		GameObject.Find ("CanvasDay").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ().SetGameSpeed(1);
+		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("CanvasGeneral").GetComponent<Canvas> ().enabled = false;
 		yield return new WaitForSeconds (4);
 		SceneManager.LoadScene ("StartScene");
 	}
