@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 
 public class NewMonsterButtonScript : MonoBehaviour {
-
-	private Canvas canvasPrice, generateMonster, canvasNotEnoughGold;
+	public Canvas canvasPrice;
+	private Canvas generateMonster, canvasNotEnoughGold;
 	private Interface canvasInterface;
 	public bool GenerationEnabled;
 
@@ -14,7 +14,6 @@ public class NewMonsterButtonScript : MonoBehaviour {
 	{
 		GenerationEnabled = true;
 		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
-		canvasPrice = GameObject.Find ("CanvasGenePrice").GetComponent<Canvas> ();
 	}
 	void Update()
 	{
@@ -89,7 +88,7 @@ public class NewMonsterButtonScript : MonoBehaviour {
 	IEnumerator CantAffordCanvas(int monsterNum)
 	{
 		if (monsterNum == 0) {
-			canvasNotEnoughGold = GameObject.Find ("NotEnoughGold").GetComponent<Canvas> ();
+			canvasNotEnoughGold = GameObject.Find ("NotEnoughGoldGenerate").GetComponent<Canvas> ();
 			canvasPrice.enabled = false;
 			canvasNotEnoughGold.enabled = true;
 			yield return new WaitForSeconds (1);
@@ -99,7 +98,9 @@ public class NewMonsterButtonScript : MonoBehaviour {
 			canvasNotEnoughGold = GameObject.Find ("NotEnoughGold" + monsterNum.ToString ()).GetComponent<Canvas> ();
 			canvasNotEnoughGold.enabled = true;
 			yield return new WaitForSeconds (1);
-			canvasNotEnoughGold.enabled = false;
+			for (int i = 1; i <= 3; i++) {
+				GameObject.Find ("NotEnoughGold" + i.ToString ()).GetComponent<Canvas> ().enabled = false;
+			}
 		}
 
 	}

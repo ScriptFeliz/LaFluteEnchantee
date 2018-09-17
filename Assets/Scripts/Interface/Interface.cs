@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class Interface : MonoBehaviour {
 	Environment env;
-	public Text txtHP, txtAttack, txtAttackSpeed, txtMooveSpeed, txtGold, txtPrice, txtDay;
-	public int initHP, initAttack, initAttackSpeed, initMooveSpeed, gold;
-
-	int priceHP, priceArmor, priceAttack, priceAttackSpeed, priceMooveSpeed, monsterPrice;
+	public Text txtGold, txtDay;
+	public int gold;
 
 	Canvas canvasPrice, canvasNotEnoughGold;
 
@@ -20,18 +18,10 @@ public class Interface : MonoBehaviour {
 	void Start()
 	{
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
-		initHP = 150;
-		initAttack = 10;
-		initAttackSpeed = 100;
-		initMooveSpeed = 100;
-			
-		priceHP = 1;
-		priceAttack = 5;
 			
 		gold = 1000;
 		SetGoldText ();
 		SetDayText ();
-		//MonsterPrice ();
 	}
 
 
@@ -44,13 +34,6 @@ public class Interface : MonoBehaviour {
 		txtDay.text = "Start Day " + env.day;
 	}
 
-	//Prix des stats
-	public int StatsValue(int attack, int hp)
-	{
-		monsterPrice =  (int)Mathf.Round((priceHP * hp) + (priceAttack * attack));
-		return monsterPrice;
-	}
-		
 	//Possibilité d'achat Oui/Non
 	public bool CanAffordMonster(int monsterNum)
 	//la variable locale Monster représente :
@@ -66,13 +49,15 @@ public class Interface : MonoBehaviour {
 		}
 		else
 			{
-			if ((gold - monsterPrice) < 0) {
+			int price = GameObject.Find ("Monster" + (monsterNum).ToString ()).GetComponent<SetMonster>().monsterPrice;
+			if ((gold - price) < 0) {
 				return false;
 			} else {
 				return true;
 			}
 		}
 	}
+
 	//Achat d'un monstre
 	public void BuyMonster(int price)
 	{

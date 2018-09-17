@@ -17,7 +17,7 @@ public class CanvasGest : MonoBehaviour {
 		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("CanvasGenePrice").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("CanvasGeneral").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("NotEnoughGold").GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("NotEnoughGoldGenerate").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("Environment").GetComponent<Environment>().settingAdventurersRoom = true;
 		GameObject.Find ("Environment").GetComponent<Environment>().settingHeart = false;

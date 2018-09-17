@@ -8,11 +8,13 @@ public class MonsterPool : MonoBehaviour {
 	public int[] monsterID, hp, attack, price;
 	public int rdmMonster, gold;
 	Interface canvasInterface;
+	Environment env;
 	public Sprite[] monsterSprite;
 
 	// Use this for initialization
 	void Start () {
 		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
+		env = GameObject.Find ("Environment").GetComponent<Environment> ();
 	}
 	
 	// Update is called once per frame
@@ -30,8 +32,8 @@ public class MonsterPool : MonoBehaviour {
          	attack = new int[3];
 			price = new int[3];
 			monsterSprite = new Sprite[3];
-				
-			rdmMonster = 1;// pour le moment on n'a qu'un type de monstre
+
+			rdmMonster = (int)(Random.Range(1,(env.monsterDiscovered + 1)));
 
 			GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[rdmMonster];
 

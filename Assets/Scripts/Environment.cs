@@ -13,6 +13,8 @@ public class Environment : MonoBehaviour {
 
 	public int day;
 
+	public int monsterDiscovered;
+
 	public int baseAdventurersToInvoke;
 	public int adventurersToInvoke;
 	public int adventurersNumber;
@@ -29,8 +31,6 @@ public class Environment : MonoBehaviour {
 	public int priceHP;
 	public int priceAttack;
 
-	public int gold;
-
 	void Start()
 	{
 		baseAdventurersToInvoke = 5;
@@ -39,12 +39,24 @@ public class Environment : MonoBehaviour {
 		baseHP = 100;
 		priceHP = 1;
 		priceAttack = 5;
+		monsterDiscovered = 1;
 	}
 
 	void Update()
 	{
 		if (gameOver) {
 			StartCoroutine (GameOver ());
+		}
+
+		if (Input.GetKeyDown (KeyCode.Escape))
+		{
+			for (int i = 0; i < Dungeon.monsters.childCount; i++) {
+				Transform child = Dungeon.monsters.GetChild (i);
+				if (child.GetComponent<ActorUIScript> ().isSelected)
+				{
+					child.GetComponent<ActorUIScript> ().Unselect ();
+				}
+			}	
 		}
 
 	}
