@@ -8,11 +8,11 @@ public class ButtonMonsterColor : MonoBehaviour {
 
 	public void OnMouseEnter(int monsterNum)
 	{
-		GameObject.Find ("Button" + monsterNum.ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, .2f);
+		GameObject.Find ("Monster" + monsterNum.ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, .2f);
 	}
 
 	public void OnMouseExit (int monsterNum)
 	{
-		GameObject.Find ("Button" + monsterNum.ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, 0f);
+		GameObject.Find ("Monster" + monsterNum.ToString()).GetComponent<Image> ().color = new Color (0f, 0f, 0f, 0f);
 	}
 }

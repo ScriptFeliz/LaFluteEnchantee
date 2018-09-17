@@ -272,7 +272,7 @@ MonoBehaviour:
   env: {fileID: 0}
   actorUI: {fileID: 0}
   isMonster: 0
-  hpmax: 10
+  hpmax: 100
   hp: 10
   attack: 0
   attackSpeed: 2

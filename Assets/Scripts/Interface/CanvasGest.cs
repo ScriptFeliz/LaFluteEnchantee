@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasGest : MonoBehaviour {
 
@@ -11,19 +12,26 @@ public class CanvasGest : MonoBehaviour {
 	}
 
 	// Choisir la salle de départ
+
 	public void settingAdventurersRoom()
 	{
-		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("CanvasDayGeneral").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("CanvasGenePrice").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("CanvasGeneral").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("NotEnoughGoldGenerate").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
-		GameObject.Find ("Environment").GetComponent<Environment>().settingAdventurersRoom = true;
-		GameObject.Find ("Environment").GetComponent<Environment>().settingHeart = false;
-		GameObject.Find ("Environment").GetComponent<Environment>().addingMonster = false;
-		GameObject.Find ("Environment").GetComponent<Environment>().gameOver = false;
+
+		GameObject[] canvas = GameObject.FindGameObjectsWithTag ("Canvas");
+		foreach (GameObject curCanvas in canvas) {
+			curCanvas.GetComponent<Canvas> ().enabled = false;
+		}
+
+		Environment env = GameObject.Find ("Environment").GetComponent<Environment> ();
+		env.settingAdventurersRoom = true;
+		env.settingHeart = false;
+		env.addingMonster = false;
+		env.gameOver = false;
+		GameObject.Find ("SelectedObject").GetComponent<Image> ().enabled = false;
+
 		GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = true;
 		GameObject.Find ("TextOverlay").GetComponent<TextOverlay> ().SetTextOverlay ();
+
+		GameObject.Find ("TextOverlay").GetComponent<TextOverlay> ().SetTextOverlay ();
+
 	}
 }

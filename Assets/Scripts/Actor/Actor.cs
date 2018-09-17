@@ -9,6 +9,7 @@ public class Actor : MonoBehaviour {
 	public ActorUIScript actorUI;
 
 	public bool isMonster;
+	public int monsterDungeonID;
 	public int hpmax;
 	public int hp;
     public int attack;
@@ -83,6 +84,7 @@ public class Actor : MonoBehaviour {
 					if (Overlay.GetComponent<InfoRoom> ().H == roomH && Overlay.GetComponent<InfoRoom> ().W == roomW) {
 						Overlay.GetComponent<InfoRoom> ().containsMonster = false;
 					}
+					break;
 				}
 			}
 				
@@ -97,9 +99,13 @@ public class Actor : MonoBehaviour {
 			env.adventurersNumber -= 1;
 		}
 
-		Destroy (gameObject);
+		SelfDestroy();
 	}
 
+	public void SelfDestroy()
+	{
+		Destroy (gameObject);
+	}
 
     // Use this for initialization
 	void Start () {

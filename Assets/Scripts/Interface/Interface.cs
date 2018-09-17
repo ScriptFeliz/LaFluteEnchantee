@@ -7,6 +7,7 @@ public class Interface : MonoBehaviour {
 	Environment env;
 	public Text txtGold, txtDay;
 	public int gold;
+	public bool generationEnabled, monsterSelectionEnabled;
 
 	Canvas canvasPrice, canvasNotEnoughGold;
 
@@ -18,8 +19,11 @@ public class Interface : MonoBehaviour {
 	void Start()
 	{
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
-			
+
 		gold = 1000;
+		generationEnabled = true;
+		monsterSelectionEnabled = true;
+
 		SetGoldText ();
 		SetDayText ();
 	}
@@ -35,31 +39,26 @@ public class Interface : MonoBehaviour {
 	}
 
 	//Possibilité d'achat Oui/Non
-	public bool CanAffordMonster(int monsterNum)
-	//la variable locale Monster représente :
-	//	0 : Prix de la création d'un monstre
-	//	1 2 3 : Prix du monstre (1 2 ou 3)
+	public bool CanAfford(int price)
 	{
-		if (monsterNum == 0) {
-			if ((gold - 50) < 0) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-		else
-			{
-			int price = GameObject.Find ("Monster" + (monsterNum).ToString ()).GetComponent<SetMonster>().monsterPrice;
-			if ((gold - price) < 0) {
-				return false;
-			} else {
-				return true;
-			}
+		if ((gold - price) < 0) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 
+	public IEnumerator CantAffordCanvas(Canvas canvasPrice, Canvas canvasNotEnoughGold)
+	{
+		canvasPrice.enabled = false;
+		canvasNotEnoughGold.enabled = true;
+		yield return new WaitForSeconds (1);
+		canvasNotEnoughGold.enabled = false;
+		canvasPrice.enabled = true;
+	}
+
 	//Achat d'un monstre
-	public void BuyMonster(int price)
+	public void removeGold(int price)
 	{
 		gold -= price;
 		SetGoldText ();

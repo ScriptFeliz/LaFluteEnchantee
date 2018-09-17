@@ -5,31 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Environment : MonoBehaviour {
 
-	public bool settingAdventurersRoom;
-	public bool settingHeart;
-	public bool addingMonster;
-	public int monsterNum;
-	public bool gameOver;
+	public bool settingAdventurersRoom, settingHeart, addingMonster, moovingMonster, gameOver = false;
 
 	public int day;
 
 	public int monsterDiscovered;
 
-	public int baseAdventurersToInvoke;
-	public int adventurersToInvoke;
-	public int adventurersNumber;
+	public int baseAdventurersToInvoke, adventurersToInvoke, adventurersNumber;
 
-	public int startingH;
-	public int startingW;
+	public int startingH, startingW;
+	public int heartH, heartW;
 
-	public int heartH;
-	public int heartW;
+	public int baseAttack, baseHP;
 
-	public int baseAttack;
-	public int baseHP;
-
-	public int priceHP;
-	public int priceAttack;
+	public int priceHP, priceAttack;
 
 	void Start()
 	{
@@ -50,16 +39,33 @@ public class Environment : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Escape))
 		{
-			for (int i = 0; i < Dungeon.monsters.childCount; i++) {
-				Transform child = Dungeon.monsters.GetChild (i);
-				if (child.GetComponent<ActorUIScript> ().isSelected)
-				{
-					child.GetComponent<ActorUIScript> ().Unselect ();
-				}
-			}	
+			unselectAll ();
 		}
 
 	}
+
+	public void unselectAll()
+	{
+		for (int i = 0; i < Dungeon.monsters.childCount; i++) {
+			Transform child = Dungeon.monsters.GetChild (i);
+			if (child.GetComponent<ActorUIScript> ().isSelected)
+			{
+				child.GetComponent<ActorUIScript> ().Unselect ();
+			}
+		}	
+	}
+
+	public void RoomOverlayOff()
+	{
+		// Désactiver l'overlay
+		GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
+		foreach (GameObject Overlay in gameObjectOverlay)
+		{
+			Overlay.GetComponent<Renderer> ().enabled = false;
+			Overlay.GetComponent<PolygonCollider2D> ().enabled = false;
+		}
+	}
+
 	public void newDay()
 	{
 		adventurersNumber = 0;

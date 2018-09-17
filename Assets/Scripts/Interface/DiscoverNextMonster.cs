@@ -66,7 +66,7 @@ public class DiscoverNextMonster : MonoBehaviour {
 		{
 			if (gold - price >= 0)
 			{
-				canvasInterface.BuyMonster (price);
+				canvasInterface.removeGold (price);
 				price *= 2;
 
 				if (env.monsterDiscovered < numPossibleMonster) {

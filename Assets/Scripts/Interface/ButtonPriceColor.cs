@@ -18,9 +18,9 @@ public class ButtonPriceColor : MonoBehaviour {
 
 		if ((gold - price) >= 0)
 		{
-			GameObject.Find ("GenerateMonster").GetComponent<Image> ().color = new Color (0f, 0.7f, 0f, 1f);
+			GameObject.Find ("GenerateMonsters").GetComponent<Image> ().color = new Color (0f, 0.7f, 0f, 1f);
 		} else {
-			GameObject.Find ("GenerateMonster").GetComponent<Image> ().color = new Color (1f, 0f, 0f, 1f);
+			GameObject.Find ("GenerateMonsters").GetComponent<Image> ().color = new Color (1f, 0f, 0f, 1f);
 		}
 	}
 

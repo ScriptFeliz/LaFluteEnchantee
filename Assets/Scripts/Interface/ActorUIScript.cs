@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ActorUIScript : MonoBehaviour {
+	Environment env;
+	Interface Interface;
+
 	public bool isSelected;
 	bool fadeDown;
 	float selectFade;
@@ -12,6 +15,8 @@ public class ActorUIScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		env = GameObject.Find ("Environment").GetComponent<Environment> ();
+		Interface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 		isSelected = false;
 		selectFade = 1;
 		actor = GetComponentInParent<Actor> ();
@@ -28,10 +33,13 @@ public class ActorUIScript : MonoBehaviour {
 
 	public void OnMouseUpAsButton()
 	{
-		if (isSelected == true) {
-			Unselect ();
-		} else {
-			Select ();
+		if (Interface.monsterSelectionEnabled)
+		{
+			if (isSelected == true) {
+				Unselect ();
+			} else {
+				Select ();
+			}
 		}
 	}
 
@@ -45,6 +53,8 @@ public class ActorUIScript : MonoBehaviour {
 
 		isSelected = true;
 		StartCoroutine(FadeDown());
+
+		moovingMonster ();
 	}
 
 	public void Unselect()
@@ -53,6 +63,8 @@ public class ActorUIScript : MonoBehaviour {
 		selectFade = 1;
 		actorGO.GetComponent<SpriteRenderer>().color = new  Color(1f,1f,1f,selectFade);
 		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
+		env.RoomOverlayOff();
+
 	}
 
 	public void OnMouseEnter()
@@ -86,4 +98,33 @@ public class ActorUIScript : MonoBehaviour {
 			}
 		}
 	}
+
+	public void moovingMonster()
+	{
+		GameObject.Find ("Environment").GetComponent<Environment> ().moovingMonster = true;
+
+		GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
+		foreach (GameObject Overlay in gameObjectOverlay)
+		{
+			if (Overlay.GetComponentInParent<InfoRoom>().containsMonster == false) {
+				Overlay.GetComponent<Renderer> ().enabled = true;
+				Overlay.GetComponent<PolygonCollider2D> ().enabled = true;
+				Overlay.GetComponent<SpriteRenderer> ().color = new Color (0f, 1f, 0f, .2f);
+			}
+		}
+
+
+		GameObject selectedObject = GameObject.Find ("SelectedObject");
+		SelectedObjectProperties properties = selectedObject.GetComponent<SelectedObjectProperties> ();
+
+		Actor actor = GetComponentInParent<Actor> ();
+		properties.monsterDungeonID = actor.monsterDungeonID;
+		properties.hp = actor.hp;
+		properties.hpmax = actor.hpmax;
+		properties.attack = actor.attack;
+		properties.value = actor.value;
+		selectedObject.GetComponent<Image>().sprite = GetComponentInParent<SpriteRenderer>().sprite;
+	}
+
+
 }
