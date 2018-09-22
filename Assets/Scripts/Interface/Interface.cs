@@ -74,6 +74,8 @@ public class Interface : MonoBehaviour {
 
 	public void StartDay()
 	{
+		env.isDay = true;
+		env.RoomOverlayOff ();
 		GameObject.Find("Environment").GetComponent<DayGest>().StartNewDay();
 	}
 		

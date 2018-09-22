@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Environment : MonoBehaviour {
 
-	public bool settingAdventurersRoom, settingHeart, addingMonster, moovingMonster, gameOver = false;
+	public bool settingAdventurersRoom, settingHeart, addingMonster, moovingMonster, isDay, gameOver = false;
 
 	public int day;
 
@@ -29,6 +29,7 @@ public class Environment : MonoBehaviour {
 		priceHP = 1;
 		priceAttack = 5;
 		monsterDiscovered = 1;
+		isDay = false;
 	}
 
 	void Update()

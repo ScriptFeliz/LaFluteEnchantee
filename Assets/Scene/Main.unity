@@ -113,6 +113,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17396897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 17396898}
+  - component: {fileID: 17396899}
+  - component: {fileID: 17396900}
+  m_Layer: 5
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &17396898
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17396897}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 111318352}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.8999023, y: -25.475}
+  m_SizeDelta: {x: -6.4, y: -96.35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &17396899
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17396897}
+--- !u!114 &17396900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17396897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Stamina
 --- !u!1 &71984522
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +517,7 @@ RectTransform:
   - {fileID: 925642715}
   - {fileID: 1075896416}
   - {fileID: 300157796}
+  - {fileID: 17396898}
   - {fileID: 587625857}
   m_Father: {fileID: 966484897}
   m_RootOrder: 0
@@ -807,7 +882,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 788212684}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -934,6 +1009,7 @@ MonoBehaviour:
   hpTxt: {fileID: 0}
   attackTxt: {fileID: 0}
   priceTxt: {fileID: 0}
+  staminaTxt: {fileID: 0}
   monsterPoolNum: 0
   monsterImg: {fileID: 0}
 --- !u!114 &283796250
@@ -1646,6 +1722,84 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &446295247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1693835383273404, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 446295248}
+  - component: {fileID: 446295250}
+  - component: {fileID: 446295249}
+  m_Layer: 5
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &446295248
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224172090530447682, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446295247}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 893580505}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: -1.7}
+  m_SizeDelta: {x: 85, y: 21}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &446295249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114105551415242128, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446295247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stamina :'
+--- !u!222 &446295250
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222257176492639384, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446295247}
 --- !u!1 &447507807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,12 +2192,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111318352}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.8999786, y: -35.100006}
-  m_SizeDelta: {x: -6.399994, y: -72.4}
+  m_AnchoredPosition: {x: 2.8999786, y: -49.7}
+  m_SizeDelta: {x: -6.4, y: -101.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &587625858
 MonoBehaviour:
@@ -2428,6 +2582,84 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714590738}
+--- !u!1 &718734195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1693835383273404, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 718734196}
+  - component: {fileID: 718734198}
+  - component: {fileID: 718734197}
+  m_Layer: 5
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &718734196
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224172090530447682, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718734195}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 775029582}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: -3.35}
+  m_SizeDelta: {x: 85, y: 21}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &718734197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114105551415242128, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718734195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stamina :'
+--- !u!222 &718734198
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222257176492639384, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 718734195}
 --- !u!1 &739781362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,6 +2913,7 @@ RectTransform:
   - {fileID: 917725339}
   - {fileID: 834262221}
   - {fileID: 2070481322}
+  - {fileID: 718734196}
   - {fileID: 962700116}
   m_Father: {fileID: 1478705527}
   m_RootOrder: 1
@@ -2707,6 +2940,7 @@ MonoBehaviour:
   hpTxt: {fileID: 834262222}
   attackTxt: {fileID: 2070481323}
   priceTxt: {fileID: 1001977367}
+  staminaTxt: {fileID: 718734197}
   monsterPoolNum: 1
   monsterImg: {fileID: 962700117}
 --- !u!114 &775029584
@@ -2956,6 +3190,7 @@ RectTransform:
   - {fileID: 514986764}
   - {fileID: 649597563}
   - {fileID: 1924491480}
+  - {fileID: 1171381893}
   - {fileID: 265734627}
   m_Father: {fileID: 1478705527}
   m_RootOrder: 3
@@ -3047,6 +3282,7 @@ MonoBehaviour:
   hpTxt: {fileID: 649597564}
   attackTxt: {fileID: 1924491481}
   priceTxt: {fileID: 714590740}
+  staminaTxt: {fileID: 1171381894}
   monsterPoolNum: 3
   monsterImg: {fileID: 265734628}
 --- !u!114 &788212687
@@ -3492,6 +3728,7 @@ RectTransform:
   - {fileID: 785759681}
   - {fileID: 578913103}
   - {fileID: 763626684}
+  - {fileID: 446295248}
   - {fileID: 1638955694}
   m_Father: {fileID: 1478705527}
   m_RootOrder: 2
@@ -3583,6 +3820,7 @@ MonoBehaviour:
   hpTxt: {fileID: 578913104}
   attackTxt: {fileID: 763626685}
   priceTxt: {fileID: 1522333734}
+  staminaTxt: {fileID: 446295249}
   monsterPoolNum: 2
   monsterImg: {fileID: 1638955695}
 --- !u!114 &893580508
@@ -4421,7 +4659,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 775029582}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4650,6 +4888,7 @@ MonoBehaviour:
   statHP: {fileID: 1075896417}
   statArmor: {fileID: 0}
   statAttack: {fileID: 300157797}
+  statStamina: {fileID: 17396900}
   statAttackSpeed: {fileID: 0}
   statMooveSpeed: {fileID: 0}
   statKills: {fileID: 587625858}
@@ -4833,8 +5072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.8999786, y: 12}
-  m_SizeDelta: {x: -6.399994, y: -75.1}
+  m_AnchoredPosition: {x: 2.8999786, y: 24.525}
+  m_SizeDelta: {x: -6.4, y: -100.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075896417
 MonoBehaviour:
@@ -5271,6 +5510,84 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1167612942}
+--- !u!1 &1171381892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1693835383273404, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1171381893}
+  - component: {fileID: 1171381895}
+  - component: {fileID: 1171381894}
+  m_Layer: 5
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1171381893
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224172090530447682, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171381892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 788212684}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: -3.5}
+  m_SizeDelta: {x: 85, y: 21}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1171381894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114105551415242128, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171381892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stamina :'
+--- !u!222 &1171381895
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222257176492639384, guid: 40cad993fcadffb458435b9eff702b60,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171381892}
 --- !u!1 &1183204208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5705,7 +6022,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1283573585}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -6449,6 +6766,8 @@ MonoBehaviour:
   hp: 0
   hpmax: 0
   attack: 0
+  stamina: 0
+  staminamax: 0
   value: 0
   objectImg: {fileID: 0}
 --- !u!114 &1460619701
@@ -6661,7 +6980,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1478705526}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -6934,7 +7253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.302, y: 0.325}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583471400
@@ -7234,7 +7553,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 893580505}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -7308,6 +7627,7 @@ MonoBehaviour:
   settingHeart: 0
   addingMonster: 0
   moovingMonster: 0
+  isDay: 0
   gameOver: 0
   day: 0
   monsterDiscovered: 0
@@ -7419,7 +7739,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692305938}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7469,7 +7789,8 @@ MonoBehaviour:
   txtGold: {fileID: 1624150003}
   txtDay: {fileID: 325728911}
   gold: 0
-  GenerationEnabled: 0
+  generationEnabled: 0
+  monsterSelectionEnabled: 0
 --- !u!1 &1712307111
 GameObject:
   m_ObjectHideFlags: 0
@@ -8475,7 +8796,6 @@ GameObject:
   - component: {fileID: 2133554154}
   - component: {fileID: 2133554153}
   - component: {fileID: 2133554152}
-  - component: {fileID: 2133554151}
   - component: {fileID: 2133554150}
   - component: {fileID: 2133554155}
   m_Layer: 5
@@ -8570,17 +8890,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &2133554151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2133554147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 586cef65c2e2dde439d06333cfa5428f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2133554152
 MonoBehaviour:
   m_ObjectHideFlags: 0
