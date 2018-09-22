@@ -60,7 +60,7 @@ public class GenerateMonsters : MonoBehaviour {
 	{
 		for (int i = 0; i <= 2; i++)
 		{
-			int monsterDungeonID, hp, attack, price;
+			int monsterDungeonID, hp, hpmax, attack, price, stamina, staminamax;
 			Sprite monsterSprite;
 
 			monsterDungeonID = (int)(Random.Range(1,(env.monsterDiscovered + 1)));
@@ -69,15 +69,17 @@ public class GenerateMonsters : MonoBehaviour {
 			Actor actor = monster.GetComponent <Actor> ();
 
 			//Pas de randomisation des statistiques pour le moment
-			hp = actor.hpmax;
+			hp = actor.hp;
+			hpmax = actor.hpmax;
 			attack = actor.attack;
+			stamina = actor.stamina;
+			staminamax = actor.staminamax;
 			price = actor.value;
 			monsterSprite = monster.GetComponent<SpriteRenderer>().sprite;
 
 			//On affiche à l'écran les stats générées
 			GeneratedMonster monsterGenerating = GameObject.Find("Monster" + (i + 1).ToString()).GetComponent<GeneratedMonster>();
-			monsterGenerating.SetPoolMonster(monsterDungeonID, hp, attack, price, monsterSprite);
-
+			monsterGenerating.SetPoolMonster(monsterDungeonID, hp, hpmax, attack, price, stamina, staminamax, monsterSprite);
 
 			//Gestion de la couleur du bouton d'achat
 			int gold = Interface.gold;

@@ -44,6 +44,9 @@ public class DayGest : MonoBehaviour {
 			Actor actor = Dungeon.monsters.GetChild (i).GetComponent<Actor>();
 			actor.hp = actor.hpmax;
 			actor.SetHealthBar();
+			if (!actor.isHeart) {
+				actor.unKO ();
+			}
 		}
 
 		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
@@ -52,6 +55,7 @@ public class DayGest : MonoBehaviour {
 
 	void SetNextDay()
 	{
+		env.isDay = false;
 		env.day += 1;
 		GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().SetDayText();
 

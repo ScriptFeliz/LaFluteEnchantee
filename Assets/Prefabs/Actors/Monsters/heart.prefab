@@ -207,17 +207,21 @@ MonoBehaviour:
   env: {fileID: 0}
   actorUI: {fileID: 0}
   isMonster: 0
-  hpmax: 175
+  monsterDungeonID: 0
   hp: 0
-  attack: 15
+  hpmax: 250
+  attack: 20
+  stamina: 0
+  staminamax: 1
+  value: 0
   attackSpeed: 100
   mooveSpeed: 0
   healthBar: {fileID: 1007866214979582}
-  value: 0
   damageDealt: 0
   kills: 0
   isDead: 0
-  fighting: 0
+  isKO: 0
+  isFighting: 0
   isHeart: 0
   orderModif: 1
   roomH: 0

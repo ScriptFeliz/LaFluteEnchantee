@@ -9,10 +9,10 @@ public class GeneratedMonster : MonoBehaviour {
 	Interface Interface;
 
 	public Canvas canvasPriceBidon, canvasNotEnoughGold;
-	public Text hpTxt, attackTxt, priceTxt;
+	public Text hpTxt, attackTxt, priceTxt, staminaTxt;
 	public int monsterPoolNum;
 	public Image monsterImg;
-	int monsterDungeonID, monsterHP, monsterAttack, monsterPrice;
+	int monsterDungeonID, monsterHP, monsterHPmax, monsterAttack, monsterPrice, monsterStamina, monsterStaminamax;
 
 	private Canvas generateMonster;
 
@@ -63,14 +63,16 @@ public class GeneratedMonster : MonoBehaviour {
 			SelectedObjectProperties properties = selectedObject.GetComponent<SelectedObjectProperties> ();
 			properties.monsterDungeonID = monsterDungeonID;
 			properties.hp = monsterHP;
-			properties.hpmax = monsterHP;
+			properties.hpmax = monsterHPmax;
 			properties.attack = monsterAttack;
+			properties.stamina = monsterStamina;
+			properties.staminamax = monsterStaminamax;
 			properties.value = monsterPrice;
 			selectedObject.GetComponent<Image>().sprite = GameObject.Find("Monster" + monsterPoolNum.ToString()).GetComponent<GeneratedMonster>().monsterImg.sprite;
 
 			selectedObject.GetComponent<Image> ().enabled = true;
 			Cursor.visible = false;
-			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(true,monsterHP,monsterHP,monsterAttack,0);
+			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(true,monsterHP,monsterHP,monsterAttack,monsterStamina,monsterStaminamax,0);
 			GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = true;
 		} else {
 			StartCoroutine (Interface.CantAffordCanvas (canvasPriceBidon, canvasNotEnoughGold));
@@ -79,17 +81,22 @@ public class GeneratedMonster : MonoBehaviour {
 
 
 
-	public void SetPoolMonster(int dungeonID, int hp, int attack, int price, Sprite monsterSprite)
+	public void SetPoolMonster(int dungeonID, int hp, int hpmax, int attack, int price, int stamina, int staminamax, Sprite monsterSprite)
 	{
 		monsterDungeonID = dungeonID;
 		hpTxt.text = "HP : " + hp.ToString();
 		attackTxt.text = "Attack : " + attack.ToString();
+		staminaTxt.text = "Stamina : " + stamina.ToString();
 		priceTxt.text = price.ToString() + "g";
+		
 		monsterHP = hp;
+		monsterHPmax = hpmax;
 		monsterAttack = attack;
 		monsterPrice = price;
+		monsterStamina = stamina;
+		monsterStaminamax = staminamax;
 		monsterImg.GetComponent<Image>().sprite = monsterSprite;
-
+		
 	}
 
 	public void CancelGeneration()

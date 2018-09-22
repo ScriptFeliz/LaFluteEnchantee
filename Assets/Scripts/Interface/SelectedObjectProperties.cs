@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectedObjectProperties : MonoBehaviour {
-	public int num, monsterDungeonID, hp, hpmax, attack, value;
+	public int num, monsterDungeonID, hp, hpmax, attack, stamina, staminamax, value;
 	public Sprite objectImg;
 
 	// Use this for initialization

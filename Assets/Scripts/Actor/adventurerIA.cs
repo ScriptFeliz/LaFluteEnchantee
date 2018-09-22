@@ -9,7 +9,7 @@ public class adventurerIA : MonoBehaviour {
 	bool destOK;
 
 	Actor currentAdventurer;
-	Actor monsterFighting;
+	Actor monsterisFighting;
 
 	GameSpeed speed;
 
@@ -33,7 +33,7 @@ public class adventurerIA : MonoBehaviour {
 		}
 
 		if (cooldownTimer == 0) {
-			if (!currentAdventurer.fighting && !moving)
+			if (!currentAdventurer.isFighting && !moving)
 			{
 				// S'il y a des monstres
 				if (Dungeon.monsters.childCount > 0)
@@ -42,11 +42,11 @@ public class adventurerIA : MonoBehaviour {
 					for (int i = 0; i < Dungeon.monsters.childCount; i++)
 					{
 						Transform child = Dungeon.monsters.GetChild (i);
-						if (child.GetComponent<Actor> ().roomH == currentAdventurer.roomH && child.GetComponent<Actor> ().roomW == currentAdventurer.roomW)
+						if (child.GetComponent<Actor> ().roomH == currentAdventurer.roomH && child.GetComponent<Actor> ().roomW == currentAdventurer.roomW && child.GetComponent<Actor>().isKO == false)
 						{
-							currentAdventurer.fighting = true;
+							currentAdventurer.isFighting = true;
 							//moving = false;
-							monsterFighting = child.GetComponent<Actor> ();
+							monsterisFighting = child.GetComponent<Actor> ();
 							cooldown = (float)100 / (float)currentAdventurer.attackSpeed;
 							cooldownTimer = cooldown;
 						} else {
@@ -63,8 +63,8 @@ public class adventurerIA : MonoBehaviour {
 				}
 			} 
 
-			if (currentAdventurer.fighting) {
-				currentAdventurer.Fight (monsterFighting);
+			if (currentAdventurer.isFighting) {
+				currentAdventurer.Fight (monsterisFighting);
 				cooldownTimer = cooldown;
 			} else 
 			{
