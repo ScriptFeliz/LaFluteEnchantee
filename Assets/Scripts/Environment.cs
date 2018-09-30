@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Environment : MonoBehaviour {
 
-	public bool settingAdventurersRoom, settingHeart, addingMonster, moovingMonster, isDay, gameOver = false;
+	public bool settingAdventurersRoom, settingHeart, addingMonster, movingMonster, isDay, gameOver = false;
 
 	public int day;
 
