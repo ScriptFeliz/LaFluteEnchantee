@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Overlay
   - Ground
+  - Canvas
   layers:
   - Default
   - TransparentFX

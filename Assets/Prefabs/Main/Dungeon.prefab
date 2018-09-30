@@ -52,8 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
-  monster: {fileID: 0}
-  adventurer: {fileID: 0}
   floorTiles:
   - {fileID: 1938918548666352, guid: c6dd981ec1362524eb4b7955f647d800, type: 2}
   - {fileID: 1112068411204500, guid: dd8e279271b5a5f47ba5094626d3a05e, type: 2}
@@ -74,5 +72,6 @@ MonoBehaviour:
   monsterList:
   - {fileID: 1985698998285378, guid: c3b428f71c654fa4e815473f759b0830, type: 2}
   - {fileID: 1199439413285064, guid: be6803fc03573fa479985514d9a44544, type: 2}
+  - {fileID: 1562836545280680, guid: d55ffd3bdc870e549a35639cbb1fc186, type: 2}
   selectRoomSprites:
   - {fileID: 1569570575349122, guid: 8de65273c61ca1c4e8cb9591c960bf14, type: 2}

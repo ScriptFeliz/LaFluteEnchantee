@@ -89,9 +89,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4525964234526986}
   - component: {fileID: 212823583026121744}
-  - component: {fileID: 61812314828927820}
   - component: {fileID: 114691474474283760}
   - component: {fileID: 114184073430688272}
+  - component: {fileID: 61812314828927820}
+  - component: {fileID: 114191295853652604}
   m_Layer: 9
   m_Name: heart
   m_TagString: Monster
@@ -107,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1985698998285378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 866.1644, y: 9.194061, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 224186833568672260}
   m_Father: {fileID: 0}
@@ -129,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.047619, y: 3.047619}
+    oldSize: {x: 2.58, y: 2.75}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,6 +152,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   cooldownTimer: 0
+--- !u!114 &114191295853652604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985698998285378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4667f4098f9a665498d2f3e2d48a773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  actor: {fileID: 114691474474283760}
+  actorGO: {fileID: 1985698998285378}
 --- !u!114 &114397018709719714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   env: {fileID: 0}
+  actorUI: {fileID: 0}
   isMonster: 0
   hpmax: 175
   hp: 0
@@ -197,6 +213,7 @@ MonoBehaviour:
   attackSpeed: 100
   mooveSpeed: 0
   healthBar: {fileID: 1007866214979582}
+  value: 0
   damageDealt: 0
   kills: 0
   isDead: 0
@@ -331,8 +348,8 @@ SpriteRenderer:
   m_SortingLayerID: 1145027681
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 16811695275f7fa4a9727b5094fe9560, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 715e5a5aea523d1439ddb69fbd3fa04f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class Actor : MonoBehaviour {
 	public Environment env;
+	public ActorUIScript actorUI;
 
 	public bool isMonster;
+	public int monsterDungeonID;
 	public int hpmax;
 	public int hp;
     public int attack;
@@ -72,33 +74,43 @@ public class Actor : MonoBehaviour {
 	{
 		//Si c'est un monstre qui est mort, la salle ne contient plus de monstre
 		if (tag == "Monster") {
+			actorUI.Unselect ();
 			if (isHeart) {
 				env.gameOver = true;
 			} else {
+				
 				GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
 				foreach (GameObject Overlay in gameObjectOverlay) {
 					if (Overlay.GetComponent<InfoRoom> ().H == roomH && Overlay.GetComponent<InfoRoom> ().W == roomW) {
 						Overlay.GetComponent<InfoRoom> ().containsMonster = false;
 					}
+					break;
 				}
 			}
+				
 		}
 
 		if (tag == "Adventurer")
 		{
-			int adventurerValue = (int)Mathf.Round(GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().StatsValue(attack, hpmax));
+//			int adventurerValue = (int)Mathf.Round(GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().StatsValue(attack, hpmax));
+//			100 par aventurier tué le temps de faire un calcul
+			int adventurerValue = 100;
 			GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().addGold (adventurerValue);
 			env.adventurersNumber -= 1;
 		}
 
-		Destroy (gameObject);
+		SelfDestroy();
 	}
 
+	public void SelfDestroy()
+	{
+		Destroy (gameObject);
+	}
 
     // Use this for initialization
 	void Start () {
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
-
+		actorUI = GetComponentInParent<ActorUIScript> ();
 		int x = 0;
 		int y = 0;
 
@@ -159,21 +171,7 @@ public class Actor : MonoBehaviour {
 	}
 
 
-
-	// Affichage des stats quand on passe sur l'acteur
-
-
-	void OnMouseEnter()
-	{
-		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = true;
-	}
-
-	void OnMouseExit()
-	{
-		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
-	}          
-
-	void OnMouseOver()
+	public void StatsOverlay()
 	{
 		GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(isMonster,hp,hpmax,attack,kills);
 	}
