@@ -6,7 +6,7 @@ public class Dungeon : MonoBehaviour {
 	
 	public static int height = 3, width = 3, columns = 11, rows = 11;
 	public static Transform tiles, monsters, adventurers, dungeonOverlay;
-	public GameObject tile;
+	public GameObject tile, staminaGO;
 	public GameObject[] floorTiles, wallTiles, doorTiles, adventurerList, monsterList, selectRoomSprites;
 
 	int posx, posy, correctionPosH, correctionPosW;

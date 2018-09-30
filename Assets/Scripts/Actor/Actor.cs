@@ -15,7 +15,6 @@ public class Actor : MonoBehaviour {
 	public int mooveSpeed = 100;
 	public GameObject healthBar;
 	public GameObject healthGO;
-	public GameObject staminaGO;
 
 	public int damageDealt;
 	public int kills;
@@ -127,6 +126,32 @@ public class Actor : MonoBehaviour {
 	void LooseStamina()
 	{
 		stamina -= 1;
+		int numStaminaBar = 0;
+		for (int i = 0; i < gameObject.transform.childCount; i++) {
+			Transform child = gameObject.transform.GetChild (i);
+			if (child.name == "Stamina(Clone)")
+			{
+				numStaminaBar += 1;
+				Debug.Log (numStaminaBar);
+				Debug.Log (stamina);
+				if (numStaminaBar > stamina)
+				{
+					Debug.Log ("HERE");	
+					child.localScale = new Vector3 (0.05f,0.05f,0f);
+				}
+			}
+		}
+		/*
+		for (int i = 0; i < actor.staminamax; i++) {
+			GameObject stamina = Instantiate (GameObject.Find ("Dungeon(Clone)").GetComponent<Dungeon> ().staminaGO) as GameObject;
+			stamina.transform.SetParent (gameObject.transform);
+
+			Vector3 posHealthBar = healthGO.transform.localPosition;
+			float posStaminaX = (float)(i * 2 - actor.staminamax + 1) / 15;
+			stamina.transform.localPosition = new Vector3 (posStaminaX, posHealthBar.y - 0.2f, 0f);
+
+		}*/
+
 		if (stamina > 0) {
 			KO ();
 		} else {
@@ -140,7 +165,6 @@ public class Actor : MonoBehaviour {
 		isKO = true;
 		gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.4f);
 		healthGO.SetActive(false);
-		staminaGO.SetActive (false);
 	}
 
 	public void unKO()
@@ -148,7 +172,6 @@ public class Actor : MonoBehaviour {
 		isKO = false;
 		gameObject.GetComponent<SpriteRenderer>().color = new Color (1f,1f,1f,1f);
 		healthGO.SetActive(true);
-		staminaGO.SetActive(true);
 	}
 
 	public void Die()
@@ -197,6 +220,16 @@ public class Actor : MonoBehaviour {
 		healthBar.transform.localScale = new Vector3 (myHealth, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
 
+	//Fonction Gestion de la barre de vie
+	public void SetStaminaBar()
+	{
+		
+		/*
+		for (int i = 0; i < staminaGO.;i++)
+		{
+			//GameObject child = staminaGO.GetChild (i);
+		}*/
+	}
 
 	public void StatsOverlay()
 	{
