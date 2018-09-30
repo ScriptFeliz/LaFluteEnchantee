@@ -62,10 +62,10 @@ public class GeneratedMonster : MonoBehaviour {
 			GameObject selectedObject = GameObject.Find ("SelectedObject");
 			SelectedObjectProperties properties = selectedObject.GetComponent<SelectedObjectProperties> ();
 			properties.monsterDungeonID = monsterDungeonID;
-			properties.hp = monsterHP;
+			properties.hp = monsterHPmax;
 			properties.hpmax = monsterHPmax;
 			properties.attack = monsterAttack;
-			properties.stamina = monsterStamina;
+			properties.stamina = monsterStaminamax;
 			properties.staminamax = monsterStaminamax;
 			properties.value = monsterPrice;
 			selectedObject.GetComponent<Image>().sprite = GameObject.Find("Monster" + monsterPoolNum.ToString()).GetComponent<GeneratedMonster>().monsterImg.sprite;

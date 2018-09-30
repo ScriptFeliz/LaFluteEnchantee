@@ -43,6 +43,7 @@ public class adventurerSpawner : MonoBehaviour {
 		actor.roomH = env.startingH;
 		actor.roomW = env.startingW;
 		actor.roomPos = 2;
+		actor.hp = env.baseHP;
 		actor.hpmax = env.baseHP;
 		actor.attack = env.baseAttack;
 		actor.attackSpeed = 100;

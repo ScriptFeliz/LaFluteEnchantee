@@ -57,7 +57,7 @@ public class ActorUIScript : MonoBehaviour {
 
 		if (env.isDay == false)
 		{
-			moovingMonster ();
+			movingMonster ();
 		}
 	}
 
@@ -109,9 +109,9 @@ public class ActorUIScript : MonoBehaviour {
 		}
 	}
 
-	public void moovingMonster()
+	public void movingMonster()
 	{
-		GameObject.Find ("Environment").GetComponent<Environment> ().moovingMonster = true;
+		GameObject.Find ("Environment").GetComponent<Environment> ().movingMonster = true;
 
 		GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
 		foreach (GameObject Overlay in gameObjectOverlay)
@@ -131,6 +131,8 @@ public class ActorUIScript : MonoBehaviour {
 		properties.monsterDungeonID = actor.monsterDungeonID;
 		properties.hp = actor.hp;
 		properties.hpmax = actor.hpmax;
+		properties.stamina = actor.stamina;
+		properties.staminamax = actor.staminamax;
 		properties.attack = actor.attack;
 		properties.value = actor.value;
 		selectedObject.GetComponent<Image>().sprite = GetComponentInParent<SpriteRenderer>().sprite;

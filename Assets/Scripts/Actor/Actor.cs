@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Actor : MonoBehaviour {
 	public Environment env;
 	public ActorUIScript actorUI;
+	public MonsterUIScript monsterUI;
 
 	public bool isMonster;
 	public int monsterDungeonID;
@@ -34,12 +35,9 @@ public class Actor : MonoBehaviour {
 	void Start () {
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
 		actorUI = GetComponentInParent<ActorUIScript> ();
+
 		int x = 0;
 		int y = 0;
-
-		hp = hpmax;
-		stamina = staminamax;
-		kills = 0;
 
 		switch (roomPos)
 		{
@@ -78,6 +76,16 @@ public class Actor : MonoBehaviour {
 		float isoy = (float)(posx + posy) / 2;
 
 		transform.position = new Vector3 (isox, isoy, transform.position.z);
+
+		for (int i = 0; i < staminamax; i++) {
+			GameObject stamina = Instantiate (GameObject.Find ("Dungeon(Clone)").GetComponent<Dungeon> ().staminaGO) as GameObject;
+			stamina.transform.SetParent (gameObject.transform);
+
+			Vector3 posHealthBar = healthGO.transform.localPosition;
+			float posStaminaX = (float)(i * 2 - staminamax + 1) / 15;
+			stamina.transform.localPosition = new Vector3 (posStaminaX, posHealthBar.y - 0.25f, 0f);
+		}
+		UpdateStaminaBars ();
 	}
 
 	public void Fight(Actor enemy)
@@ -123,34 +131,10 @@ public class Actor : MonoBehaviour {
 		}
     }
 	
-	void LooseStamina()
+	public void LooseStamina()
 	{
 		stamina -= 1;
-		int numStaminaBar = 0;
-		for (int i = 0; i < gameObject.transform.childCount; i++) {
-			Transform child = gameObject.transform.GetChild (i);
-			if (child.name == "Stamina(Clone)")
-			{
-				numStaminaBar += 1;
-				Debug.Log (numStaminaBar);
-				Debug.Log (stamina);
-				if (numStaminaBar > stamina)
-				{
-					Debug.Log ("HERE");	
-					child.localScale = new Vector3 (0.05f,0.05f,0f);
-				}
-			}
-		}
-		/*
-		for (int i = 0; i < actor.staminamax; i++) {
-			GameObject stamina = Instantiate (GameObject.Find ("Dungeon(Clone)").GetComponent<Dungeon> ().staminaGO) as GameObject;
-			stamina.transform.SetParent (gameObject.transform);
-
-			Vector3 posHealthBar = healthGO.transform.localPosition;
-			float posStaminaX = (float)(i * 2 - actor.staminamax + 1) / 15;
-			stamina.transform.localPosition = new Vector3 (posStaminaX, posHealthBar.y - 0.2f, 0f);
-
-		}*/
+		UpdateStaminaBars ();
 
 		if (stamina > 0) {
 			KO ();
@@ -159,19 +143,57 @@ public class Actor : MonoBehaviour {
 		}
 	}
 
+	public void GainStamina()
+	{
+		stamina += 1;
+		UpdateStaminaBars ();
+	}
+
+
+
+	public void UpdateStaminaBars()
+	{	
+		int numStaminaBar = 0;
+		for (int i = 0; i < gameObject.transform.childCount; i++) {
+			Transform child = gameObject.transform.GetChild (i);
+			if (child.name == "Stamina(Clone)")
+			{
+				numStaminaBar += 1;
+				if (numStaminaBar > stamina) 
+				{
+					child.gameObject.GetComponent<Stamina> ().staminaBar.GetComponent<Image> ().color = new Color (1f, 0f, 0f, 1f);
+				} else 
+				{
+					child.gameObject.GetComponent<Stamina> ().staminaBar.GetComponent<Image> ().color = new Color (0f, 0.7f, 0f, 1f);
+				}
+			}
+		}
+	}
+
+
 	public void KO()
 	{
 		isFighting = false;
 		isKO = true;
 		gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,.4f);
-		healthGO.SetActive(false);
+		for (int i = 0; i < gameObject.transform.childCount; i++) {
+			Transform child = gameObject.transform.GetChild (i);
+			{
+				child.gameObject.SetActive(false);
+			}
+		}
 	}
 
 	public void unKO()
 	{
 		isKO = false;
 		gameObject.GetComponent<SpriteRenderer>().color = new Color (1f,1f,1f,1f);
-		healthGO.SetActive(true);
+		for (int i = 0; i < gameObject.transform.childCount; i++) {
+			Transform child = gameObject.transform.GetChild (i);
+			{
+				child.gameObject.SetActive(true);
+			}
+		}
 	}
 
 	public void Die()
@@ -218,17 +240,6 @@ public class Actor : MonoBehaviour {
 	{
 		float myHealth = (float)hp / hpmax;	
 		healthBar.transform.localScale = new Vector3 (myHealth, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
-	}
-
-	//Fonction Gestion de la barre de vie
-	public void SetStaminaBar()
-	{
-		
-		/*
-		for (int i = 0; i < staminaGO.;i++)
-		{
-			//GameObject child = staminaGO.GetChild (i);
-		}*/
 	}
 
 	public void StatsOverlay()

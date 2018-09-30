@@ -206,17 +206,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   env: {fileID: 0}
   actorUI: {fileID: 0}
+  monsterUI: {fileID: 0}
   isMonster: 0
   monsterDungeonID: 0
-  hp: 0
+  hp: 250
   hpmax: 250
   attack: 20
-  stamina: 0
+  stamina: 1
   staminamax: 1
   value: 0
   attackSpeed: 100
   mooveSpeed: 0
   healthBar: {fileID: 1007866214979582}
+  healthGO: {fileID: 1494175333799612}
   damageDealt: 0
   kills: 0
   isDead: 0

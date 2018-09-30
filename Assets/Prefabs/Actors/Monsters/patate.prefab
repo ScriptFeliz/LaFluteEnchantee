@@ -38,10 +38,10 @@ GameObject:
   - component: {fileID: 4953970785459156}
   - component: {fileID: 212232444232048102}
   - component: {fileID: 61390950480772074}
+  - component: {fileID: 114432184810263464}
+  - component: {fileID: 114517652300198000}
   - component: {fileID: 114662977116208492}
   - component: {fileID: 114541677992414092}
-  - component: {fileID: 114517652300198000}
-  - component: {fileID: 114432184810263464}
   m_Layer: 9
   m_Name: patate
   m_TagString: Monster

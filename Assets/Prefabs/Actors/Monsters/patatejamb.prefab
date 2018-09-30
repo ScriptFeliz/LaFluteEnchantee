@@ -38,10 +38,10 @@ GameObject:
   - component: {fileID: 4416817677887028}
   - component: {fileID: 212640734175194872}
   - component: {fileID: 61108298129729788}
-  - component: {fileID: 114162568124959658}
-  - component: {fileID: 114890179530670006}
   - component: {fileID: 114444273132389180}
   - component: {fileID: 114052556052860518}
+  - component: {fileID: 114162568124959658}
+  - component: {fileID: 114890179530670006}
   m_Layer: 9
   m_Name: patatejamb
   m_TagString: Monster

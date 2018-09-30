@@ -82,8 +82,7 @@ public class MouseOverRoom: MonoBehaviour {
 						Tile.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f,0.8f,1f);
 					}
 			}
-
-
+		
 			//On affiche toutes les salles pour choisir la salle du coeur
 			GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
 			foreach (GameObject Overlay in gameObjectOverlay)
@@ -100,10 +99,8 @@ public class MouseOverRoom: MonoBehaviour {
 			GameObject.Find ("TextOverlay").GetComponent<TextOverlay> ().SetTextOverlay ();
 		}
 				
-
-
-		//Si on est en train de placer ou déplacer un monstre
-		if ((env.addingMonster == true) ||  (env.moovingMonster == true))
+				//Si on est en train de placer ou déplacer un monstre
+		if ((env.addingMonster == true) ||  (env.movingMonster == true))
 		{
 			SelectedObjectProperties selectedMonster = GameObject.Find ("SelectedObject").GetComponent<SelectedObjectProperties>();
 			GameObject monster =  Instantiate (GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[selectedMonster.monsterDungeonID]) as GameObject;
@@ -115,11 +112,15 @@ public class MouseOverRoom: MonoBehaviour {
 				Interface.removeGold (selectedMonster.value);
 			}
 
+
 			//On enregistre les données du monstre
 			actor.roomH = GetComponent<InfoRoom> ().H;
 			actor.roomW = GetComponent<InfoRoom> ().W;
 			actor.monsterDungeonID = selectedMonster.monsterDungeonID;
+			actor.hp = selectedMonster.hp;
 			actor.hpmax = selectedMonster.hpmax;
+			actor.stamina = selectedMonster.stamina;
+			actor.staminamax = selectedMonster.staminamax;
 			actor.attack = selectedMonster.attack;
 			actor.value = selectedMonster.value;
 			actor.roomPos = 5;
@@ -141,9 +142,7 @@ public class MouseOverRoom: MonoBehaviour {
 			GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
 			Cursor.visible = true;
 
-
-
-			if (env.moovingMonster == true)
+			if (env.movingMonster == true)
 			{
 				for (int i = 0; i < Dungeon.monsters.childCount; i++) {
 					Transform child = Dungeon.monsters.GetChild (i);
@@ -162,6 +161,7 @@ public class MouseOverRoom: MonoBehaviour {
 						break;
 					}
 				}
+				env.movingMonster = false;
 			}
 		}
 	}

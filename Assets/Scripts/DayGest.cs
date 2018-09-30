@@ -42,7 +42,15 @@ public class DayGest : MonoBehaviour {
 		for (int i = 0; i < Dungeon.monsters.childCount; i++)
 		{
 			Actor actor = Dungeon.monsters.GetChild (i).GetComponent<Actor>();
-			actor.hp = actor.hpmax;
+			if (actor.hp == actor.hpmax) {
+				if (actor.stamina < actor.staminamax)
+				{
+					actor.GainStamina ();
+				}
+			} else {
+				actor.hp = actor.hpmax;
+			}
+
 			actor.SetHealthBar();
 			if (!actor.isHeart) {
 				actor.unKO ();
