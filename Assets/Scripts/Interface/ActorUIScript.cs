@@ -20,6 +20,7 @@ public class ActorUIScript : MonoBehaviour {
 		isSelected = false;
 		selectFade = 1;
 		actor = GetComponentInParent<Actor> ();
+		actorGO = gameObject;
 	}
 	
 	// Update is called once per frame
@@ -54,13 +55,22 @@ public class ActorUIScript : MonoBehaviour {
 		isSelected = true;
 		StartCoroutine(FadeDown());
 
-		moovingMonster ();
+		if (env.isDay == false)
+		{
+			moovingMonster ();
+		}
 	}
 
 	public void Unselect()
 	{
 		isSelected = false;
-		selectFade = 1;
+		if (actor.isKO)
+		{
+			selectFade = 0.4f;
+		} else
+		{
+			selectFade = 1;
+		}
 		actorGO.GetComponent<SpriteRenderer>().color = new  Color(1f,1f,1f,selectFade);
 		GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = false;
 		env.RoomOverlayOff();

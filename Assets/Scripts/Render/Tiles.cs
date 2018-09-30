@@ -16,9 +16,5 @@ public class Tiles : MonoBehaviour {
 		Renderer renderer = gameObject.GetComponent (typeof(Renderer)) as Renderer;
 		renderer.sortingOrder = (int)(-posx*2 - posy*2) + orderModif;
 	}
-
-	void Update()
-	{
-
-	}
+		
 }
