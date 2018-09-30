@@ -20,7 +20,7 @@ public class ActorUIScript : MonoBehaviour {
 		isSelected = false;
 		selectFade = 1;
 		actor = GetComponentInParent<Actor> ();
-		actorGO = transform.gameObject;
+		actorGO = gameObject;
 	}
 	
 	// Update is called once per frame

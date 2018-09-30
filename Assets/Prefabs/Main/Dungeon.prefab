@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
+  staminaGO: {fileID: 1856705381970968, guid: 482817fa5e863ea46850a256d194e5e7, type: 2}
   floorTiles:
   - {fileID: 1938918548666352, guid: c6dd981ec1362524eb4b7955f647d800, type: 2}
   - {fileID: 1112068411204500, guid: dd8e279271b5a5f47ba5094626d3a05e, type: 2}
