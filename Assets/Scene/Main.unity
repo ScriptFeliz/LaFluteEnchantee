@@ -7626,7 +7626,7 @@ MonoBehaviour:
   settingAdventurersRoom: 0
   settingHeart: 0
   addingMonster: 0
-  moovingMonster: 0
+  movingMonster: 0
   isDay: 0
   gameOver: 0
   day: 0
