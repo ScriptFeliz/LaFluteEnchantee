@@ -72,7 +72,7 @@ public class GeneratedMonster : MonoBehaviour {
 
 			selectedObject.GetComponent<Image> ().enabled = true;
 			Cursor.visible = false;
-			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(true,monsterHP,monsterHP,monsterAttack,monsterStamina,monsterStaminamax,0);
+			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(true,monsterHPmax,monsterHPmax,monsterAttack,monsterStaminamax,monsterStaminamax,0);
 			GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = true;
 		} else {
 			StartCoroutine (Interface.CantAffordCanvas (canvasPriceBidon, canvasNotEnoughGold));
@@ -84,9 +84,9 @@ public class GeneratedMonster : MonoBehaviour {
 	public void SetPoolMonster(int dungeonID, int hp, int hpmax, int attack, int price, int stamina, int staminamax, Sprite monsterSprite)
 	{
 		monsterDungeonID = dungeonID;
-		hpTxt.text = "HP : " + hp.ToString();
+		hpTxt.text = "HP : " + hpmax.ToString();
 		attackTxt.text = "Attack : " + attack.ToString();
-		staminaTxt.text = "Stamina : " + stamina.ToString();
+		staminaTxt.text = "Stamina : " + staminamax.ToString();
 		priceTxt.text = price.ToString() + "g";
 		
 		monsterHP = hp;
