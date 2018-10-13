@@ -7,7 +7,7 @@ public class Interface : MonoBehaviour {
 	Environment env;
 	public Text txtGold, txtDay;
 	public int gold;
-	public bool generationEnabled, monsterSelectionEnabled;
+	public bool generationEnabled, selectionEnabled;
 
 	Canvas canvasPrice, canvasNotEnoughGold;
 
@@ -22,7 +22,7 @@ public class Interface : MonoBehaviour {
 
 		gold = 1000;
 		generationEnabled = true;
-		monsterSelectionEnabled = true;
+		selectionEnabled = true;
 
 		SetGoldText ();
 		SetDayText ();

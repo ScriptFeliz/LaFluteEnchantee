@@ -39,15 +39,15 @@ public class adventurerSpawner : MonoBehaviour {
 	void InvokeAdventurer()
 	{
 		GameObject adventurer = Instantiate (adventurers[0]) as GameObject;
-		Actor actor = adventurer.GetComponent <Actor> ();
-		actor.roomH = env.startingH;
-		actor.roomW = env.startingW;
-		actor.roomPos = 2;
-		actor.hp = env.baseHP;
-		actor.hpmax = env.baseHP;
-		actor.attack = env.baseAttack;
-		actor.attackSpeed = 100;
-		actor.mooveSpeed = 100;
+		BaseActor baseActor = adventurer.GetComponent <BaseActor> ();
+		baseActor.roomH = env.startingH;
+		baseActor.roomW = env.startingW;
+		baseActor.roomPos = 2;
+		baseActor.hp = env.baseHP;
+		baseActor.hpmax = env.baseHP;
+		baseActor.attack = env.baseAttack;
+		baseActor.attackSpeed = 100;
+		baseActor.mooveSpeed = 100;
 		adventurer.transform.SetParent (Dungeon.adventurers);
 		env.adventurersToInvoke -= 1;
 		env.adventurersNumber += 1;

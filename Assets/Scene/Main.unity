@@ -7790,7 +7790,7 @@ MonoBehaviour:
   txtDay: {fileID: 325728911}
   gold: 0
   generationEnabled: 0
-  monsterSelectionEnabled: 0
+  selectionEnabled: 0
 --- !u!1 &1712307111
 GameObject:
   m_ObjectHideFlags: 0

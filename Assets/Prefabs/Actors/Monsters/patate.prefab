@@ -38,10 +38,8 @@ GameObject:
   - component: {fileID: 4953970785459156}
   - component: {fileID: 212232444232048102}
   - component: {fileID: 61390950480772074}
-  - component: {fileID: 114432184810263464}
-  - component: {fileID: 114517652300198000}
-  - component: {fileID: 114662977116208492}
-  - component: {fileID: 114541677992414092}
+  - component: {fileID: 114786662128058672}
+  - component: {fileID: 114609242589358948}
   m_Layer: 9
   m_Name: patate
   m_TagString: Monster
@@ -167,17 +165,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114432184810263464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199439413285064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f0e4b61717bd4690db262dee4d907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114498975463930442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +192,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114517652300198000
+--- !u!114 &114609242589358948
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -213,60 +200,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1199439413285064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4667f4098f9a665498d2f3e2d48a773a, type: 3}
+  m_Script: {fileID: 11500000, guid: 978266617b28faa4b8332b1a66e34a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  actor: {fileID: 114662977116208492}
-  actorGO: {fileID: 1199439413285064}
---- !u!114 &114541677992414092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199439413285064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe7692fce74b2742b7593dbc5ba2024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  cooldownTimer: 0
---- !u!114 &114662977116208492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199439413285064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfee6b27e7450fe458227dbf75afe9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  env: {fileID: 0}
-  actorUI: {fileID: 0}
-  isMonster: 0
-  monsterDungeonID: 0
-  hp: 0
-  hpmax: 100
-  attack: 10
-  stamina: 0
-  staminamax: 1
-  value: 100
-  attackSpeed: 100
-  mooveSpeed: 100
-  healthBar: {fileID: 1536605418503114}
-  healthGO: {fileID: 1580223599618574}
-  damageDealt: 0
-  kills: 0
-  isDead: 0
-  isKO: 0
-  isFighting: 0
-  isHeart: 0
-  orderModif: 1
-  roomH: 0
-  roomW: 0
-  roomPos: 5
+  monster: {fileID: 114786662128058672}
 --- !u!114 &114761457639456152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +232,37 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114786662128058672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199439413285064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfced9c2d232084eae71046821f90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  hpmax: 100
+  attack: 10
+  value: 50
+  healthBar: {fileID: 1536605418503114}
+  healthGO: {fileID: 1580223599618574}
+  attackSpeed: 100
+  mooveSpeed: 100
+  damageDealt: 0
+  kills: 0
+  isDead: 0
+  isKO: 0
+  isFighting: 0
+  roomH: 0
+  roomW: 0
+  roomPos: 0
+  monsterUI: {fileID: 114609242589358948}
+  stamina: 1
+  staminamax: 1
+  monsterDungeonID: 1
 --- !u!114 &114911704166411142
 MonoBehaviour:
   m_ObjectHideFlags: 1

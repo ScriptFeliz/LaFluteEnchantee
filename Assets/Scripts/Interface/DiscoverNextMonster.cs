@@ -88,7 +88,7 @@ public class DiscoverNextMonster : MonoBehaviour {
 
 
 		GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[monsterNumInList];
-		Actor newMonster = monster.GetComponent <Actor> ();
+		BaseActor newMonster = monster.GetComponent <BaseActor> ();
 
 		hpTxt.text = "HP : " + newMonster.hpmax;
 		attackTxt.text = "Attack : " + newMonster.attack;

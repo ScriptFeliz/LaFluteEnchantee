@@ -49,11 +49,28 @@ public class Environment : MonoBehaviour {
 	{
 		for (int i = 0; i < Dungeon.monsters.childCount; i++) {
 			Transform child = Dungeon.monsters.GetChild (i);
-			if (child.GetComponent<ActorUIScript> ().isSelected)
+
+			if (child.name == "Heart")
 			{
-				child.GetComponent<ActorUIScript> ().Unselect ();
+				if (child.GetComponent<HeartUI> ().isSelected)
+				{
+					child.GetComponent<HeartUI> ().Unselect ();
+				}
 			}
-		}	
+			else
+			{
+				if (child.GetComponent<MonsterUI> ().isSelected) {
+					child.GetComponent<MonsterUI> ().Unselect ();
+				}
+			}
+		}
+		for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
+			Transform child = Dungeon.adventurers.GetChild (i);
+			if (child.GetComponent<AdventurerUI> ().isSelected)
+			{
+				child.GetComponent<AdventurerUI> ().Unselect ();
+			}
+		}
 	}
 
 	public void RoomOverlayOff()

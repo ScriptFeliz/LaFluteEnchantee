@@ -2,38 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class adventurerIA : MonoBehaviour {
-	public bool moving;
-	public float cooldown;
-	public float cooldownTimer;
-	bool destOK;
-
-	Actor currentAdventurer;
-	Actor monsterisFighting;
-
-	GameSpeed speed;
-
-	void Start()
-	{
-		speed = GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ();
-		currentAdventurer = GetComponent<Actor> ();
-		moving = false;
-		cooldown = (float)100 / (float)currentAdventurer.mooveSpeed;
-		cooldownTimer = cooldown;
-	}
+public class Adventurer : BaseActor {
+	BaseActor monsterFighting;
+	private bool moving = false;
+	private bool destOK;
 
 	void Update()
 	{
-		if (cooldownTimer > 0)
-		{
+		if (cooldownTimer > 0) {
 			cooldownTimer -= Time.deltaTime * speed.currentSpeed;
-		} else 
-		{
+		} else {
 			cooldownTimer = 0;
 		}
-
 		if (cooldownTimer == 0) {
-			if (!currentAdventurer.isFighting && !moving)
+			if (!isFighting && !moving)
 			{
 				// S'il y a des monstres
 				if (Dungeon.monsters.childCount > 0)
@@ -42,44 +24,60 @@ public class adventurerIA : MonoBehaviour {
 					for (int i = 0; i < Dungeon.monsters.childCount; i++)
 					{
 						Transform child = Dungeon.monsters.GetChild (i);
-						if (child.GetComponent<Actor> ().roomH == currentAdventurer.roomH && child.GetComponent<Actor> ().roomW == currentAdventurer.roomW && child.GetComponent<Actor>().isKO == false)
+						if (child.GetComponent<Monster> ().roomH == roomH && child.GetComponent<Monster> ().roomW == roomW && child.GetComponent<Monster>().isKO == false) 
 						{
-							currentAdventurer.isFighting = true;
+							isFighting = true;
 							//moving = false;
-							monsterisFighting = child.GetComponent<Actor> ();
-							cooldown = (float)100 / (float)currentAdventurer.attackSpeed;
+							monsterFighting = child.GetComponent<Monster> ();
+							cooldown = (float)100 / (float)attackSpeed;
 							cooldownTimer = cooldown;
 						} else {
 							moving = true;
-							cooldown = (float)100 / (float)currentAdventurer.mooveSpeed;
+							cooldown = (float)100 / (float)mooveSpeed;
 							cooldownTimer = cooldown;
 						}
 					}
 				} else
 				{
 					moving = true;
-					cooldown = (float)100 / (float)currentAdventurer.mooveSpeed;
+					cooldown = (float)100 / (float)mooveSpeed;
 					cooldownTimer = cooldown;
 				}
 			} 
 
-			if (currentAdventurer.isFighting) {
-				currentAdventurer.Fight (monsterisFighting);
+			if (isFighting) {
+				Fight (monsterFighting);
 				cooldownTimer = cooldown;
 			} else 
 			{
 				if (moving) {
 
-					int posx = currentAdventurer.roomH * 10 + PosXY(currentAdventurer.roomPos, "x");
-					int posy = currentAdventurer.roomW * 10 + PosXY(currentAdventurer.roomPos, "y");
+					int posx = roomH * 10 + PosXY(roomPos, "x");
+					int posy = roomW * 10 + PosXY(roomPos, "y");
 					DungeonMap.Map [posx, posy] = "Floor";
 
 					Move ();
 					cooldownTimer = cooldown;
 				}
 			}
-
 		}
+	}
+
+	protected override void TakeDamage(int dmg)
+	{
+		base.TakeDamage (dmg);
+
+		if (hp == 0)
+		{
+			Die ();
+		}
+	}
+
+	protected override void Die(){
+		base.Die ();
+		int adventurerValue = 150;
+		GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ().addGold (adventurerValue);
+		env.adventurersNumber -= 1;
 	}
 
 	void Move()
@@ -103,23 +101,23 @@ public class adventurerIA : MonoBehaviour {
 		for (int i = 1; i <= 4; i++) {
 			switch (i) {
 			case 1:
-				roomHdest = currentAdventurer.roomH;
-				roomWdest = currentAdventurer.roomW - 1;
+				roomHdest = roomH;
+				roomWdest = roomW - 1;
 				roomXdest = 8;
 				break;
 			case 2:
-				roomHdest = currentAdventurer.roomH - 1;
-				roomWdest = currentAdventurer.roomW;
+				roomHdest = roomH - 1;
+				roomWdest = roomW;
 				roomXdest = 6;
 				break;
 			case 3:
-				roomHdest = currentAdventurer.roomH;
-				roomWdest = currentAdventurer.roomW + 1;
+				roomHdest = roomH;
+				roomWdest = roomW + 1;
 				roomXdest = 2;
 				break;
 			case 4:
-				roomHdest = currentAdventurer.roomH + 1;
-				roomWdest = currentAdventurer.roomW;
+				roomHdest = roomH + 1;
+				roomWdest = roomW;
 				roomXdest = 4;
 				break;
 			}
@@ -150,7 +148,7 @@ public class adventurerIA : MonoBehaviour {
 
 			for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
 				Transform child = Dungeon.adventurers.GetChild (i);
-				Actor ActorCheck = child.GetComponent<Actor> ();
+				BaseActor ActorCheck = child.GetComponent<BaseActor> ();
 				if ((ActorCheck.roomH == roomHdest) && (ActorCheck.roomW == roomWdest) && (ActorCheck.roomPos == roomXdest))
 				{
 					destOK = false;
@@ -166,16 +164,16 @@ public class adventurerIA : MonoBehaviour {
 			}
 		}
 
-		currentAdventurer.roomH = roomHdest;
-		currentAdventurer.roomW = roomWdest;
-		currentAdventurer.roomPos = roomXdest;
+		roomH = roomHdest;
+		roomW = roomWdest;
+		roomPos = roomXdest;
 
-		x = PosXY(currentAdventurer.roomPos,"x");
-		y = PosXY(currentAdventurer.roomPos,"y");
+		x = PosXY(roomPos,"x");
+		y = PosXY(roomPos,"y");
 
 
-		int posx = currentAdventurer.roomH * 10 + x;
-		int posy = currentAdventurer.roomW * 10 + y;
+		int posx = roomH * 10 + x;
+		int posy = roomW * 10 + y;
 		DungeonMap.Map [posx, posy] = "Adventurer";
 
 		float isox = posx - posy;
@@ -229,5 +227,7 @@ public class adventurerIA : MonoBehaviour {
 		}
 
 	}
-		
+
+
+	
 }
