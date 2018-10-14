@@ -7,9 +7,7 @@ public class DungeonMap : MonoBehaviour {
 	public static string[,] Map ;
 
 	void Awake(){
-		// La taille doit être fixée : j'ai mis 15 pour correspondre au donjon de 3*3 * tilespour le moment
-
-		Map = new string[33,33];
+		Map = new string[999,999];
 	}
 
 	// Use this for initialization

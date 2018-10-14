@@ -23,6 +23,8 @@ public class DiscoverNextMonster : MonoBehaviour {
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
 		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
 		newMonsterCanvas = GameObject.Find ("NewMonsterDiscovered").GetComponent<Canvas> ();
+
+		priceTxt.text = price + "g";
 	}
 
 	void Update () {
@@ -78,7 +80,6 @@ public class DiscoverNextMonster : MonoBehaviour {
 				StartCoroutine(CantAffordCanvas ());
 			}
 		}
-
 	}
 
 	public void NewMonsterCanvas(int monsterNumInList)
