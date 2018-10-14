@@ -53,6 +53,7 @@ public class DayGest : MonoBehaviour {
 
 			monster.SetHealthBar();
 			monster.unKO ();
+			env.unselectAll ();
 		}
 
 		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;

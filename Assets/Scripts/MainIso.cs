@@ -9,21 +9,16 @@ public class MainIso : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		Instantiate (dungeonMap);	
-		Instantiate (dungeon);
-		Instantiate (canvasGest);
+		dungeonMap = Instantiate (dungeonMap) as GameObject;
+		dungeonMap.name = "DungeonMap";
+
+		dungeon = Instantiate (dungeon) as GameObject;
+		dungeon.name = "Dungeon";
+
+		canvasGest = Instantiate (canvasGest) as GameObject;
+		canvasGest.name = "CanvasGest";
 
 		GameObject.Find ("CanvasDayGeneral").GetComponent<GameSpeed> ().SetGameSpeed(1);
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 }
 

@@ -18,7 +18,7 @@ public class MonsterUI : BaseActorUI {
 	protected override void Select()
 	{
 		base.Select();
-		if (env.isDay == false)
+		if ((env.isDay == false) && (!monster.isHeart))
 		{
 			movingMonster ();
 		}

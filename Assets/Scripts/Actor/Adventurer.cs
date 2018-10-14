@@ -24,17 +24,18 @@ public class Adventurer : BaseActor {
 					for (int i = 0; i < Dungeon.monsters.childCount; i++)
 					{
 						Transform child = Dungeon.monsters.GetChild (i);
-						if (child.GetComponent<Monster> ().roomH == roomH && child.GetComponent<Monster> ().roomW == roomW && child.GetComponent<Monster>().isKO == false) 
+						if (child.GetComponent<BaseActor> ().roomH == roomH && child.GetComponent<BaseActor> ().roomW == roomW && child.GetComponent<BaseActor>().isKO == false) 
 						{
 							isFighting = true;
 							//moving = false;
-							monsterFighting = child.GetComponent<Monster> ();
+							monsterFighting = child.GetComponent<BaseActor> ();
 							cooldown = (float)100 / (float)attackSpeed;
 							cooldownTimer = cooldown;
 						} else {
-							moving = true;
-							cooldown = (float)100 / (float)mooveSpeed;
-							cooldownTimer = cooldown;
+
+								moving = true;
+								cooldown = (float)100 / (float)mooveSpeed;
+								cooldownTimer = cooldown;
 						}
 					}
 				} else

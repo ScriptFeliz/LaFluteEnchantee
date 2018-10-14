@@ -18,7 +18,7 @@ public class DiscoverNextMonster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		numPossibleMonster = GameObject.Find ("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList.GetLength(0) - 1;
+		numPossibleMonster = GameObject.Find ("Dungeon").GetComponent<Dungeon> ().monsterList.GetLength(0) - 1;
 
 		env = GameObject.Find ("Environment").GetComponent<Environment> ();
 		canvasInterface = GameObject.Find ("CanvasNightGeneral").GetComponent<Interface> ();
@@ -87,7 +87,7 @@ public class DiscoverNextMonster : MonoBehaviour {
 		canvasPrice.enabled = false;
 
 
-		GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[monsterNumInList];
+		GameObject monster =  GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[monsterNumInList];
 		BaseActor newMonster = monster.GetComponent <BaseActor> ();
 
 		hpTxt.text = "HP : " + newMonster.hpmax;

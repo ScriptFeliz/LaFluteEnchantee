@@ -8,11 +8,12 @@ public class Monster : BaseActor {
 	public MonsterUI monsterUI;
 	private BaseActor adventurerFighting;
 	public int stamina, staminamax, monsterDungeonID;
+	public bool isHeart;
 
 	protected override void Start ()
 	{
 		for (int i = 0; i < staminamax; i++) {
-			GameObject stamina = Instantiate (GameObject.Find ("Dungeon(Clone)").GetComponent<Dungeon> ().staminaGO) as GameObject;
+			GameObject stamina = Instantiate (GameObject.Find ("Dungeon").GetComponent<Dungeon> ().staminaGO) as GameObject;
 			stamina.transform.SetParent (gameObject.transform);
 
 			Vector3 posHealthBar = healthGO.transform.localPosition;
@@ -26,29 +27,53 @@ public class Monster : BaseActor {
 
 	void Update()
 	{
-		if (!isFighting) {
-			for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
-				Transform child = Dungeon.adventurers.GetChild (i);
-				BaseActor childActor = child.GetComponent<BaseActor> ();
-				if (childActor.roomH == roomH && childActor.roomW == roomW) {
-					isFighting = true;
-					adventurerFighting = child.GetComponent<BaseActor> ();
-					cooldown = (float)100 / (float)attackSpeed;
-					cooldownTimer = cooldown;
+		if (!isHeart) {
+			if (!isFighting) {
+				for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
+					Transform child = Dungeon.adventurers.GetChild (i);
+					BaseActor childActor = child.GetComponent<BaseActor> ();
+					if (childActor.roomH == roomH && childActor.roomW == roomW) {
+						isFighting = true;
+						adventurerFighting = child.GetComponent<BaseActor> ();
+						cooldown = (float)100 / (float)attackSpeed;
+						cooldownTimer = cooldown;
+					}
+				}
+			} else {
+				if (!isKO) {
+					if (cooldownTimer > 0) {
+						cooldownTimer -= Time.deltaTime * speed.currentSpeed;
+					} else {
+						cooldownTimer = 0;
+					}
+					if (cooldownTimer == 0) {
+						Fight (adventurerFighting);
+						cooldownTimer = cooldown;
+					}
 				}
 			}
 		} else {
-			if (!isKO)
-			{
-				if (cooldownTimer > 0) {
-					cooldownTimer -= Time.deltaTime * speed.currentSpeed;
-				} else {
-					cooldownTimer = 0;
+			if (cooldownTimer > 0) {
+				cooldownTimer -= Time.deltaTime * speed.currentSpeed;
+			} else {
+				cooldownTimer = 0;
+			}
+			if (cooldownTimer == 0) {
+				for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
+					Transform child = Dungeon.adventurers.GetChild (i);
+					Adventurer childActor = child.GetComponent<Adventurer> ();
+					if (childActor.roomH == roomH && childActor.roomW == roomW) {
+						isFighting = true;
+						Fight(child.GetComponent<Adventurer> ());
+						cooldown = (float)100 / (float)attackSpeed;
+					}
 				}
-				if (cooldownTimer == 0) {
-					Fight (adventurerFighting);
-					cooldownTimer = cooldown;
+
+				if (!isFighting)
+				{
+					Regen ((int)(hpmax / 50));
 				}
+				cooldownTimer = cooldown;
 			}
 		}
 	}
@@ -135,6 +160,11 @@ public class Monster : BaseActor {
 				Overlay.GetComponent<InfoRoom> ().containsMonster = false;
 				break;
 			}
+		}
+
+		if (isHeart)
+		{
+			env.gameOver = true;
 		}
 	}
 

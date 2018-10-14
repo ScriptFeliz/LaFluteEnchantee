@@ -46,10 +46,10 @@ public class MouseOverRoom: MonoBehaviour {
 			GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = false;
 
 			//On créé le coeur
-			monster = Instantiate(GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[0]) as GameObject;
+			monster = Instantiate(GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[0]) as GameObject;
 
 			//monster = Instantiate (monsters [0]) as GameObject;
-			Heart heart = monster.GetComponent <Heart> ();
+			Monster heart = monster.GetComponent <Monster> ();
 			heart.roomH = GetComponent<InfoRoom> ().H;
 			heart.roomW = GetComponent<InfoRoom> ().W;
 			monster.name = "Heart";
@@ -103,7 +103,7 @@ public class MouseOverRoom: MonoBehaviour {
 		if ((env.addingMonster == true) ||  (env.movingMonster == true))
 		{
 			SelectedObjectProperties selectedMonster = GameObject.Find ("SelectedObject").GetComponent<SelectedObjectProperties>();
-			GameObject monsterGO =  Instantiate (GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[selectedMonster.monsterDungeonID]) as GameObject;
+			GameObject monsterGO =  Instantiate (GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[selectedMonster.monsterDungeonID]) as GameObject;
 			Monster monster = monsterGO.GetComponent <Monster> ();
 
 			if (env.addingMonster == true)

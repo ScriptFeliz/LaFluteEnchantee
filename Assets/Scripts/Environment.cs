@@ -47,21 +47,12 @@ public class Environment : MonoBehaviour {
 
 	public void unselectAll()
 	{
-		for (int i = 0; i < Dungeon.monsters.childCount; i++) {
+		for (int i = 0; i < Dungeon.monsters.childCount; i++)
+		{
 			Transform child = Dungeon.monsters.GetChild (i);
-
-			if (child.name == "Heart")
+			if (child.GetComponent<MonsterUI> ().isSelected)
 			{
-				if (child.GetComponent<HeartUI> ().isSelected)
-				{
-					child.GetComponent<HeartUI> ().Unselect ();
-				}
-			}
-			else
-			{
-				if (child.GetComponent<MonsterUI> ().isSelected) {
-					child.GetComponent<MonsterUI> ().Unselect ();
-				}
+				child.GetComponent<MonsterUI> ().Unselect ();
 			}
 		}
 		for (int i = 0; i < Dungeon.adventurers.childCount; i++) {

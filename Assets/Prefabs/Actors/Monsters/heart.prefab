@@ -173,11 +173,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985698998285378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3a2a495b158a247964e7e369c38aa7, type: 3}
+  m_Script: {fileID: 11500000, guid: 978266617b28faa4b8332b1a66e34a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  heart: {fileID: 114587329965552514}
+  monster: {fileID: 114587329965552514}
 --- !u!114 &114587329965552514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1985698998285378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70be2f4fc7888eb47a8b49dd3dcbc36a, type: 3}
+  m_Script: {fileID: 11500000, guid: fdfced9c2d232084eae71046821f90ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 150
@@ -205,7 +205,11 @@ MonoBehaviour:
   roomH: 0
   roomW: 0
   roomPos: 0
-  heartUI: {fileID: 114530550533594280}
+  monsterUI: {fileID: 114530550533594280}
+  stamina: 1
+  staminamax: 1
+  monsterDungeonID: 0
+  isHeart: 1
 --- !u!114 &114770828586948134
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -105,12 +105,17 @@ public class BaseActor : MonoBehaviour {
 		}
 
 		hp -= dmg;
-
 		hp = Mathf.Clamp (hp, 0, hpmax);
-
-		// Calcul et appel de la barre de vie
 		SetHealthBar ();
 	}
+
+	protected void Regen(int regen)
+	{
+		hp += regen;
+		hp = Mathf.Clamp (hp, 0, hpmax);
+		SetHealthBar ();
+	}
+
 
 	//Fonction Gestion de la barre de vie
 	public void SetHealthBar()

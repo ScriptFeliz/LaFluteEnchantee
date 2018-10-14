@@ -65,7 +65,7 @@ public class GenerateMonsters : MonoBehaviour {
 
 			monsterDungeonID = (int)(Random.Range(1,(env.monsterDiscovered + 1)));
 
-			GameObject monsterGO =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[monsterDungeonID];
+			GameObject monsterGO =  GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[monsterDungeonID];
 			Monster monster = monsterGO.GetComponent <Monster> ();
 
 			//Pas de randomisation des statistiques pour le moment

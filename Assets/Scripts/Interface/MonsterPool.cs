@@ -35,7 +35,7 @@ public class MonsterPool : MonoBehaviour {
 
 			rdmMonster = (int)(Random.Range(1,(env.monsterDiscovered + 1)));
 
-			GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[rdmMonster];
+			GameObject monster =  GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[rdmMonster];
 
 			BaseActor baseActor = monster.GetComponent <BaseActor> ();
 
