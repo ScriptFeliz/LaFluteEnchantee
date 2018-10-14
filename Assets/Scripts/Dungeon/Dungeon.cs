@@ -35,6 +35,7 @@ public class Dungeon : MonoBehaviour {
 		monsters = new GameObject("Monsters").transform;
 		adventurers = new GameObject("Adventurers").transform;
 		dungeonOverlay = new GameObject("DungeonOverlay").transform;
+		//azeaze heart = new GameObject ("Heart").transform;
 
 		int maxX = height * (columns - 1);
 		int maxY = width * (rows - 1);

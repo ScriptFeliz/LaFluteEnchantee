@@ -89,10 +89,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4080138575352742}
   - component: {fileID: 212822920314032530}
-  - component: {fileID: 114730552763674364}
-  - component: {fileID: 114497418729542856}
   - component: {fileID: 61635497548735268}
-  - component: {fileID: 114444768949676362}
+  - component: {fileID: 114639900638999048}
+  - component: {fileID: 114659135070977166}
   m_Layer: 9
   m_Name: Jaja
   m_TagString: Adventurer
@@ -187,34 +186,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114444768949676362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978456641293150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4667f4098f9a665498d2f3e2d48a773a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSelected: 0
-  actor: {fileID: 0}
-  actorGO: {fileID: 1978456641293150}
---- !u!114 &114497418729542856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978456641293150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcbaab98178cd548a4b2d7abfe53ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moving: 0
-  cooldown: 0
-  cooldownTimer: 0
 --- !u!114 &114535939303969964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,6 +202,46 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114639900638999048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978456641293150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafa63b7a47a99c418fbc3515dcee0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  hpmax: 100
+  attack: 10
+  value: 100
+  healthBar: {fileID: 1542853927679686}
+  healthGO: {fileID: 1787062192808726}
+  attackSpeed: 100
+  mooveSpeed: 100
+  damageDealt: 0
+  kills: 0
+  isDead: 0
+  isKO: 0
+  isFighting: 0
+  roomH: 0
+  roomW: 0
+  roomPos: 0
+--- !u!114 &114659135070977166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978456641293150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b50ec26c374f5041aa0733941a09050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  adventurer: {fileID: 114639900638999048}
 --- !u!114 &114669931745929666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,36 +269,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114730552763674364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978456641293150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfee6b27e7450fe458227dbf75afe9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  env: {fileID: 0}
-  actorUI: {fileID: 0}
-  isMonster: 0
-  hpmax: 100
-  hp: 10
-  attack: 0
-  attackSpeed: 2
-  mooveSpeed: 5
-  healthBar: {fileID: 1542853927679686}
-  value: 0
-  damageDealt: 0
-  kills: 0
-  isDead: 0
-  fighting: 0
-  isHeart: 0
-  orderModif: 1
-  roomH: 0
-  roomW: 0
-  roomPos: 0
 --- !u!114 &114896352209886472
 MonoBehaviour:
   m_ObjectHideFlags: 1

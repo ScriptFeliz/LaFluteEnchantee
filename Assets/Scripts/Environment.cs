@@ -47,13 +47,21 @@ public class Environment : MonoBehaviour {
 
 	public void unselectAll()
 	{
-		for (int i = 0; i < Dungeon.monsters.childCount; i++) {
+		for (int i = 0; i < Dungeon.monsters.childCount; i++)
+		{
 			Transform child = Dungeon.monsters.GetChild (i);
-			if (child.GetComponent<ActorUIScript> ().isSelected)
+			if (child.GetComponent<MonsterUI> ().isSelected)
 			{
-				child.GetComponent<ActorUIScript> ().Unselect ();
+				child.GetComponent<MonsterUI> ().Unselect ();
 			}
-		}	
+		}
+		for (int i = 0; i < Dungeon.adventurers.childCount; i++) {
+			Transform child = Dungeon.adventurers.GetChild (i);
+			if (child.GetComponent<AdventurerUI> ().isSelected)
+			{
+				child.GetComponent<AdventurerUI> ().Unselect ();
+			}
+		}
 	}
 
 	public void RoomOverlayOff()

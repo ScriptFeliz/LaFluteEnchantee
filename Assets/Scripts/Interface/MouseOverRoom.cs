@@ -46,13 +46,13 @@ public class MouseOverRoom: MonoBehaviour {
 			GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = false;
 
 			//On créé le coeur
-			monster = Instantiate(GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[0]) as GameObject;
+			monster = Instantiate(GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[0]) as GameObject;
 
 			//monster = Instantiate (monsters [0]) as GameObject;
-			Actor actor = monster.GetComponent <Actor> ();
-			actor.isHeart = true;
-			actor.roomH = GetComponent<InfoRoom> ().H;
-			actor.roomW = GetComponent<InfoRoom> ().W;
+			Monster heart = monster.GetComponent <Monster> ();
+			heart.roomH = GetComponent<InfoRoom> ().H;
+			heart.roomW = GetComponent<InfoRoom> ().W;
+			monster.name = "Heart";
 			monster.transform.SetParent (Dungeon.monsters);
 			GetComponentInParent<InfoRoom>().containsMonster = true;
 
@@ -103,8 +103,8 @@ public class MouseOverRoom: MonoBehaviour {
 		if ((env.addingMonster == true) ||  (env.movingMonster == true))
 		{
 			SelectedObjectProperties selectedMonster = GameObject.Find ("SelectedObject").GetComponent<SelectedObjectProperties>();
-			GameObject monster =  Instantiate (GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[selectedMonster.monsterDungeonID]) as GameObject;
-			Actor actor = monster.GetComponent <Actor> ();
+			GameObject monsterGO =  Instantiate (GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[selectedMonster.monsterDungeonID]) as GameObject;
+			Monster monster = monsterGO.GetComponent <Monster> ();
 
 			if (env.addingMonster == true)
 			{
@@ -114,16 +114,16 @@ public class MouseOverRoom: MonoBehaviour {
 
 
 			//On enregistre les données du monstre
-			actor.roomH = GetComponent<InfoRoom> ().H;
-			actor.roomW = GetComponent<InfoRoom> ().W;
-			actor.monsterDungeonID = selectedMonster.monsterDungeonID;
-			actor.hp = selectedMonster.hp;
-			actor.hpmax = selectedMonster.hpmax;
-			actor.stamina = selectedMonster.stamina;
-			actor.staminamax = selectedMonster.staminamax;
-			actor.attack = selectedMonster.attack;
-			actor.value = selectedMonster.value;
-			actor.roomPos = 5;
+			monster.roomH = GetComponent<InfoRoom> ().H;
+			monster.roomW = GetComponent<InfoRoom> ().W;
+			monster.monsterDungeonID = selectedMonster.monsterDungeonID;
+			monster.hp = selectedMonster.hp;
+			monster.hpmax = selectedMonster.hpmax;
+			monster.stamina = selectedMonster.stamina;
+			monster.staminamax = selectedMonster.staminamax;
+			monster.attack = selectedMonster.attack;
+			monster.value = selectedMonster.value;
+			monster.roomPos = 5;
 			monster.transform.SetParent (Dungeon.monsters);
 			GetComponentInParent<InfoRoom>().containsMonster = true;
 
@@ -133,7 +133,7 @@ public class MouseOverRoom: MonoBehaviour {
 
 			//On autorise la génération d'un nouveau monstre
 			Interface.generationEnabled = true;
-			Interface.monsterSelectionEnabled = true;
+			Interface.selectionEnabled = true;
 
 			GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
 			GameObject.Find ("TextOverlay").GetComponent<Canvas> ().enabled = false;
@@ -146,19 +146,22 @@ public class MouseOverRoom: MonoBehaviour {
 			{
 				for (int i = 0; i < Dungeon.monsters.childCount; i++) {
 					Transform child = Dungeon.monsters.GetChild (i);
-					if (child.GetComponent<ActorUIScript> ().isSelected)
+					if (child.name != "Heart")
 					{
-						Actor selectedActor = child.GetComponent<Actor> ();
-
-						GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
-						foreach (GameObject Overlay in gameObjectOverlay) {
-							if (Overlay.GetComponent<InfoRoom> ().H == selectedActor.roomH && Overlay.GetComponent<InfoRoom> ().W == selectedActor.roomW) {
-								Overlay.GetComponent<InfoRoom> ().containsMonster = false;
-								break;
+						if (child.GetComponent<MonsterUI> ().isSelected)
+						{
+							Monster childMonster = child.GetComponent<Monster> ();
+	
+							GameObject[] gameObjectOverlay = GameObject.FindGameObjectsWithTag ("Overlay");
+							foreach (GameObject Overlay in gameObjectOverlay) {
+								if (Overlay.GetComponent<InfoRoom> ().H == childMonster.roomH && Overlay.GetComponent<InfoRoom> ().W == childMonster.roomW) {
+									Overlay.GetComponent<InfoRoom> ().containsMonster = false;
+									break;
+								}
 							}
+							childMonster.SelfDestroy ();
+							break;
 						}
-						selectedActor.SelfDestroy ();
-						break;
 					}
 				}
 				env.movingMonster = false;

@@ -41,20 +41,19 @@ public class DayGest : MonoBehaviour {
 	
 		for (int i = 0; i < Dungeon.monsters.childCount; i++)
 		{
-			Actor actor = Dungeon.monsters.GetChild (i).GetComponent<Actor>();
-			if (actor.hp == actor.hpmax) {
-				if (actor.stamina < actor.staminamax)
+			Monster monster = Dungeon.monsters.GetChild (i).GetComponent<Monster>();
+			if (monster.hp == monster.hpmax) {
+				if (monster.stamina < monster.staminamax)
 				{
-					actor.GainStamina ();
+					monster.GainStamina ();
 				}
 			} else {
-				actor.hp = actor.hpmax;
+				monster.hp = monster.hpmax;
 			}
 
-			actor.SetHealthBar();
-			if (!actor.isHeart) {
-				actor.unKO ();
-			}
+			monster.SetHealthBar();
+			monster.unKO ();
+			env.unselectAll ();
 		}
 
 		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;

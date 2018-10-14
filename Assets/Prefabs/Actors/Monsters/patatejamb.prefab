@@ -38,10 +38,8 @@ GameObject:
   - component: {fileID: 4416817677887028}
   - component: {fileID: 212640734175194872}
   - component: {fileID: 61108298129729788}
-  - component: {fileID: 114444273132389180}
-  - component: {fileID: 114052556052860518}
-  - component: {fileID: 114162568124959658}
-  - component: {fileID: 114890179530670006}
+  - component: {fileID: 114199416100102212}
+  - component: {fileID: 114293871105423744}
   m_Layer: 9
   m_Name: patatejamb
   m_TagString: Monster
@@ -140,7 +138,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.374878, y: 2.8318176}
   m_EdgeRadius: 0
---- !u!114 &114052556052860518
+--- !u!114 &114199416100102212
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -148,44 +146,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1562836545280680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f0e4b61717bd4690db262dee4d907, type: 3}
+  m_Script: {fileID: 11500000, guid: fdfced9c2d232084eae71046821f90ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114162568124959658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562836545280680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfee6b27e7450fe458227dbf75afe9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  env: {fileID: 0}
-  actorUI: {fileID: 0}
-  isMonster: 0
-  monsterDungeonID: 0
-  hp: 0
+  hp: 150
   hpmax: 150
   attack: 10
-  stamina: 0
-  staminamax: 2
-  value: 150
-  attackSpeed: 100
-  mooveSpeed: 100
+  value: 100
   healthBar: {fileID: 1367367845616720}
   healthGO: {fileID: 1836745387874984}
+  attackSpeed: 100
+  mooveSpeed: 100
   damageDealt: 0
   kills: 0
   isDead: 0
   isKO: 0
   isFighting: 0
-  isHeart: 0
-  orderModif: 1
   roomH: 0
   roomW: 0
-  roomPos: 5
+  roomPos: 0
+  monsterUI: {fileID: 114293871105423744}
+  stamina: 2
+  staminamax: 2
+  monsterDungeonID: 2
+--- !u!114 &114293871105423744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562836545280680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978266617b28faa4b8332b1a66e34a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  monster: {fileID: 114199416100102212}
 --- !u!114 &114373193002225748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,20 +236,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114444273132389180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562836545280680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4667f4098f9a665498d2f3e2d48a773a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSelected: 0
-  actor: {fileID: 114162568124959658}
-  actorGO: {fileID: 1562836545280680}
 --- !u!114 &114616927284301710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,19 +300,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114890179530670006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562836545280680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe7692fce74b2742b7593dbc5ba2024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  cooldownTimer: 0
 --- !u!212 &212640734175194872
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ public class GeneratedMonster : MonoBehaviour {
 	public Text hpTxt, attackTxt, priceTxt, staminaTxt;
 	public int monsterPoolNum;
 	public Image monsterImg;
-	int monsterDungeonID, monsterHP, monsterHPmax, monsterAttack, monsterPrice, monsterStamina, monsterStaminamax;
+	int monsterDungeonID, monsterHPmax, monsterAttack, monsterPrice, monsterStaminamax;
 
 	private Canvas generateMonster;
 
@@ -72,7 +72,7 @@ public class GeneratedMonster : MonoBehaviour {
 
 			selectedObject.GetComponent<Image> ().enabled = true;
 			Cursor.visible = false;
-			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(true,monsterHPmax,monsterHPmax,monsterAttack,monsterStaminamax,monsterStaminamax,0);
+			GameObject.Find ("StatsOverlay").GetComponent<MouseOverActor> ().SetStats(monsterHPmax,monsterHPmax,monsterAttack,monsterStaminamax,monsterStaminamax,0);
 			GameObject.Find ("StatsOverlay").GetComponent<Canvas> ().enabled = true;
 		} else {
 			StartCoroutine (Interface.CantAffordCanvas (canvasPriceBidon, canvasNotEnoughGold));
@@ -81,7 +81,7 @@ public class GeneratedMonster : MonoBehaviour {
 
 
 
-	public void SetPoolMonster(int dungeonID, int hp, int hpmax, int attack, int price, int stamina, int staminamax, Sprite monsterSprite)
+	public void SetPoolMonster(int dungeonID, int hpmax, int attack, int price, int staminamax, Sprite monsterSprite)
 	{
 		monsterDungeonID = dungeonID;
 		hpTxt.text = "HP : " + hpmax.ToString();
@@ -89,11 +89,9 @@ public class GeneratedMonster : MonoBehaviour {
 		staminaTxt.text = "Stamina : " + staminamax.ToString();
 		priceTxt.text = price.ToString() + "g";
 		
-		monsterHP = hp;
 		monsterHPmax = hpmax;
 		monsterAttack = attack;
 		monsterPrice = price;
-		monsterStamina = stamina;
 		monsterStaminamax = staminamax;
 		monsterImg.GetComponent<Image>().sprite = monsterSprite;
 		
@@ -104,6 +102,6 @@ public class GeneratedMonster : MonoBehaviour {
 		GameObject.Find ("GeneratedMonsters").GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("CanvasNightGeneral").GetComponent<Canvas> ().enabled = true;
 		Interface.generationEnabled = true;
-		Interface.monsterSelectionEnabled = true;
+		Interface.selectionEnabled = true;
 	}
 }

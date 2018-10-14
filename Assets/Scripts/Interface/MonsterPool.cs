@@ -35,15 +35,15 @@ public class MonsterPool : MonoBehaviour {
 
 			rdmMonster = (int)(Random.Range(1,(env.monsterDiscovered + 1)));
 
-			GameObject monster =  GameObject.Find("Dungeon(Clone)").GetComponent<Dungeon> ().monsterList[rdmMonster];
+			GameObject monster =  GameObject.Find("Dungeon").GetComponent<Dungeon> ().monsterList[rdmMonster];
 
-			Actor actor = monster.GetComponent <Actor> ();
+			BaseActor baseActor = monster.GetComponent <BaseActor> ();
 
 			monsterID[i] = rdmMonster;
 			//Pas de randomisation des statistiques pour le moment non plus
-			hp [i] = actor.hpmax;
-			attack [i] = actor.attack;
-			price [i] = actor.value;
+			hp [i] = baseActor.hpmax;
+			attack [i] = baseActor.attack;
+			price [i] = baseActor.value;
 
 			//On affiche à l'écran les stats générées
 			GameObject.Find("Monster" + (i + 1).ToString()).GetComponent<SetMonster>().SetStats(monsterID[i], hp[i], attack[i], price[i]);
