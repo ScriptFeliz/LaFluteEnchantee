@@ -35,7 +35,7 @@ public class Interface : MonoBehaviour {
 	}
 	public void SetDayText()
 	{
-		txtDay.text = "Start Day " + env.day;
+		txtDay.text = "Start Next Day " + env.day;
 	}
 
 	//Possibilité d'achat Oui/Non

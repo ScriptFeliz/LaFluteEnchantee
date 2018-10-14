@@ -73,7 +73,6 @@ public class BaseActor : MonoBehaviour {
 
 		int posx = roomH * 10 + x;
 		int posy = roomW * 10 + y;
-		DungeonMap.Map [posx, posy] = "Adventurer";
 
 		float isox = posx - posy;
 		float isoy = (float)(posx + posy) / 2;
