@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edabec9809c717540a44380973cbb3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 1050
+  price: 50
   canvasPrice: {fileID: 1703458040}
   canvasNotEnoughGold: {fileID: 595548521}
   priceTxt: {fileID: 2129251125}
@@ -6328,7 +6328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 7.4, y: 10}
+  m_AnchoredPosition: {x: 7.4000244, y: 10}
   m_SizeDelta: {x: 186.4, y: 26.200012}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1227246144
