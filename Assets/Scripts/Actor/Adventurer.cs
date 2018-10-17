@@ -55,7 +55,6 @@ public class Adventurer : BaseActor {
 
 					int posx = roomH * 10 + PosXY(roomPos, "x");
 					int posy = roomW * 10 + PosXY(roomPos, "y");
-					DungeonMap.Map [posx, posy] = "Floor";
 
 					Move ();
 					cooldownTimer = cooldown;
@@ -175,7 +174,6 @@ public class Adventurer : BaseActor {
 
 		int posx = roomH * 10 + x;
 		int posy = roomW * 10 + y;
-		DungeonMap.Map [posx, posy] = "Adventurer";
 
 		float isox = posx - posy;
 		float isoy = (float)(posx + posy) / 2;
